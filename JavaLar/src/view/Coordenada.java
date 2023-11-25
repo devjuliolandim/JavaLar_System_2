@@ -55,9 +55,8 @@ public class Coordenada extends JPanel {
 	   this.imagem = imagem;
 
 	    // Adicione a nova imagem apenas se não for nula
-	    if (this.imagem != null) {
-	        add(this.imagem);
-	    }
+	    add(this.imagem);
+	   
 
 	    // Revalide e repinte o painel para refletir as mudanças
 	    revalidate();

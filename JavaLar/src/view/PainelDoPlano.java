@@ -18,7 +18,7 @@ import model.Planetas;
 public class PainelDoPlano extends JPanel {
 
 	private static final int TAMANHO_DO_GRID = 15;
-	private static final int TAMANHO_DA_IMAGEM = 50;
+	private static final int TAMANHO_DA_IMAGEM = 20;
 	private static final int TAMANHO_DO_PLANO = 225;
 
 	private static final String DIRETORIO_IMAGEM_JAVA = "C:\\Users\\Júlio César\\Desktop\\FACULDADE\\2º SEMESTRE\\TÉCNICAS DE PROGRAMAÇÃO\\JavaLar\\Foto dos Planetas\\Java.png";
@@ -69,11 +69,9 @@ public class PainelDoPlano extends JPanel {
 		}
 
 	}
-	
-	
-	
+
 	private JLabel redimensionarImagens(String diretorio) {
-		
+
 		imagem = new ImageIcon(diretorio);
 
 		imagemRedimensionada = imagem.getImage().getScaledInstance(TAMANHO_DA_IMAGEM, TAMANHO_DA_IMAGEM,
@@ -82,10 +80,9 @@ public class PainelDoPlano extends JPanel {
 		imagem = new ImageIcon(imagemRedimensionada);
 
 		label = new JLabel(imagem);
-		
+
 		return label;
 	}
-	
 
 	private void adicionarImagemJava() {
 
@@ -175,30 +172,35 @@ public class PainelDoPlano extends JPanel {
 
 		for (int i = 0; i < TAMANHO_DO_GRID; i++) {
 			for (int j = 0; j < TAMANHO_DO_GRID; j++) {
-				for (Planetas planetas : memoria.getPlanetasVivos()) {
+				for (Planetas planetas : memoria.getPlanetas()) {
 
-					if (planetas.getPosicaoX() == (j + 1) && planetas.getPosicaoY() == (i + 1)) {
+					if (planetas.isVivoOuMorto() == true) {
 
-						imagem = new ImageIcon(planetas.getDiretorioDeSuaImagem());
+						if (planetas.getPosicaoX() == (j + 1) && planetas.getPosicaoY() == (i + 1)) {
 
-						imagemRedimensionada = imagem.getImage().getScaledInstance(TAMANHO_DA_IMAGEM, TAMANHO_DA_IMAGEM,
-								Image.SCALE_SMOOTH);
+							coordenadas[i][j].setImagem(redimensionarImagens(planetas.getDiretorioDeSuaImagem()));
 
-						imagem = new ImageIcon(imagemRedimensionada);
+							coordenadasOcupadasPorPlanetas.add(coordenadas[i][j]);
 
-						label = new JLabel(imagem);
+							revalidate();
+							repaint();
 
-						coordenadas[i][j].setImagem(label);
+							verificacao.verificarColisaoComEntidadaes(planetas);
 
-						coordenadasOcupadasPorPlanetas.add(coordenadas[i][j]);
+							// TESTE
 
-						revalidate();
-						repaint();
-						
+							if (planetas.getVelocidade() == 0) {
+								
+								System.out.println("O planeta " + planetas.getNome() + " morreu");
+								
+								planetas.setVivoOuMorto(false);
+								coordenadas[i][j].remove(label);
+								coordenadasOcupadasPorPlanetas.remove(coordenadas[i][j]);
+							}
+
+						}
+
 					}
-					
-					
-					
 
 				}
 

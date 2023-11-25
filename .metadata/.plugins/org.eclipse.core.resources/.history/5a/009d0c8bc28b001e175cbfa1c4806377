@@ -1,0 +1,91 @@
+package controller;
+
+import java.util.ArrayList;
+
+import model.Planetas;
+import view.Coordenada;
+import view.PainelDoPlano;
+
+public class Verificacao {
+
+	PainelDoPlano painel;
+
+	public Verificacao(PainelDoPlano painel) {
+
+		this.painel = painel;
+	}
+
+	public void verificarColisaoComEntidadaes(Planetas planeta) {
+
+		
+		ArrayList<Coordenada> bugsASeremRemovidos = new ArrayList<>();
+		ArrayList<Coordenada> devsASeremRemovidos = new ArrayList<>();
+		
+		
+		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorBugs()) {
+
+			if ((coordenada.getEixoX() + 1) == planeta.getPosicaoY()
+					&& (coordenada.getEixoY() + 1) == planeta.getPosicaoX()) {
+
+				planeta.setVelocidade(planeta.getVelocidade() - 1);
+
+				bugsASeremRemovidos.add(coordenada);
+				
+				
+			}
+			
+		}
+
+		
+		if(bugsASeremRemovidos.size() >=1) {
+			
+			painel.getCoordenadasOcupadasPorBugs().remove(bugsASeremRemovidos);		
+		}
+		
+		
+		
+		
+		
+	}
+
+	public boolean verificarCoordenadaOcupada(int x, int y) {
+
+		if (coordenadasOcupadasPorPlanetas(x, y) || coordenadasOcupadasPorDesenvolvedores(x, y)
+				|| coordenadasOcupadasPorBugs(x, y)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	private boolean coordenadasOcupadasPorPlanetas(int x, int y) {
+		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorPlanetas()) {
+			if (coordenada != null && coordenada.getEixoX() == x && coordenada.getEixoY() == y) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private boolean coordenadasOcupadasPorDesenvolvedores(int x, int y) {
+		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorDesenvolvedores()) {
+			if (coordenada != null && coordenada.getEixoX() == x && coordenada.getEixoY() == y) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private boolean coordenadasOcupadasPorBugs(int x, int y) {
+		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorBugs()) {
+			if (coordenada != null && coordenada.getEixoX() == x && coordenada.getEixoY() == y) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+}

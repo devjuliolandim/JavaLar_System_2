@@ -38,7 +38,6 @@ public class FuncaoDeCadaBotao {
 
 					planeta.mover(instantes);
 
-
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				}

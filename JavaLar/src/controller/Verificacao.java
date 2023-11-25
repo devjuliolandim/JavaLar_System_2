@@ -1,21 +1,72 @@
 package controller;
 
+import java.util.ArrayList;
+
+import model.Planetas;
 import view.Coordenada;
 import view.PainelDoPlano;
 
 public class Verificacao {
-	
+
 	PainelDoPlano painel;
-	
+
 	public Verificacao(PainelDoPlano painel) {
+
+		this.painel = painel;
+	}
+
+	public void verificarColisaoComEntidadaes(Planetas planeta) {
+
 		
-		this.painel=painel;
+		ArrayList<Coordenada> bugsASeremRemovidos = new ArrayList<>();
+		ArrayList<Coordenada> devsASeremRemovidos = new ArrayList<>();
+		
+		
+		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorBugs()) {
+
+			if ((coordenada.getEixoX() + 1) == planeta.getPosicaoY()
+					&& (coordenada.getEixoY() + 1) == planeta.getPosicaoX()) {
+
+				planeta.setVelocidade(planeta.getVelocidade() - 1);
+
+				bugsASeremRemovidos.add(coordenada);
+				
+				
+			}
+			
+		}
+
+		
+		if(bugsASeremRemovidos.size() >=1) {
+			
+			painel.getCoordenadasOcupadasPorBugs().remove(bugsASeremRemovidos);		
+		}
+		
+		
+		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorDesenvolvedores()) {
+
+			if ((coordenada.getEixoX() + 1) == planeta.getPosicaoY()
+					&& (coordenada.getEixoY() + 1) == planeta.getPosicaoX()) {
+
+				planeta.setVelocidade(planeta.getVelocidade() - 1);
+
+				devsASeremRemovidos.add(coordenada);
+				
+				
+			}
+			
+		}
+		
+		if(devsASeremRemovidos.size() >= 1) {
+			
+			painel.getCoordenadasOcupadasPorDesenvolvedores().remove(devsASeremRemovidos);
+			
+		}
+		
 		
 		
 	}
-	
-	
-	
+
 	public boolean verificarCoordenadaOcupada(int x, int y) {
 
 		if (coordenadasOcupadasPorPlanetas(x, y) || coordenadasOcupadasPorDesenvolvedores(x, y)
@@ -55,10 +106,5 @@ public class Verificacao {
 
 		return false;
 	}
-
-	
-	
-	
-	
 
 }
