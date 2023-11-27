@@ -1,6 +1,6 @@
 package planetas;
 
-import model.Planetas;
+import controller.Planetas;
 
 public class RubyOnRails extends Planetas {
 	
@@ -19,6 +19,8 @@ public class RubyOnRails extends Planetas {
 		setyInicial(11);
 		setOrbitaPermitida(3);
 		setDiretorioDeSuaImagem(DIRETORIO);
+		setImagem(DIRETORIO);
+
 	}
 
 

@@ -11,14 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import controller.Memoria;
+import controller.Planetas;
 import controller.Verificacao;
-import model.Memoria;
-import model.Planetas;
 
 public class PainelDoPlano extends JPanel {
 
 	private static final int TAMANHO_DO_GRID = 15;
-	private static final int TAMANHO_DA_IMAGEM = 20;
+	private static final int TAMANHO_DA_IMAGEM = 35;
 	private static final int TAMANHO_DO_PLANO = 225;
 
 	private static final String DIRETORIO_IMAGEM_JAVA = "C:\\Users\\Júlio César\\Desktop\\FACULDADE\\2º SEMESTRE\\TÉCNICAS DE PROGRAMAÇÃO\\JavaLar\\Foto dos Planetas\\Java.png";
@@ -161,7 +161,7 @@ public class PainelDoPlano extends JPanel {
 			label = new JLabel(imagem);
 
 			coordenadas[x][y].add(label);
-
+			
 			coordenadas[x][y].revalidate();
 			coordenadas[x][y].repaint();
 		}
@@ -171,7 +171,7 @@ public class PainelDoPlano extends JPanel {
 	public void adicionarImagensDosPlanetas() {
 
 		for (int i = 0; i < TAMANHO_DO_GRID; i++) {
-			for (int j = 0; j < TAMANHO_DO_GRID; j++) {
+			for (int j = 0; j < TAMANHO_DO_GRID; j++) {		
 				for (Planetas planetas : memoria.getPlanetas()) {
 
 					if (planetas.isVivoOuMorto() == true) {
@@ -189,7 +189,7 @@ public class PainelDoPlano extends JPanel {
 
 							// TESTE
 
-							if (planetas.getVelocidade() == 0) {
+							if (planetas.getVelocidade() == 0) {				
 								
 								System.out.println("O planeta " + planetas.getNome() + " morreu");
 								
@@ -208,6 +208,15 @@ public class PainelDoPlano extends JPanel {
 
 		}
 
+	}
+
+	
+	public Coordenada[][] getCoordenadas() {
+		return coordenadas;
+	}
+
+	public void setCoordenadas(Coordenada[][] coordenadas) {
+		this.coordenadas = coordenadas;
 	}
 
 	public ArrayList<Coordenada> getCoordenadasOcupadasPorPlanetas() {

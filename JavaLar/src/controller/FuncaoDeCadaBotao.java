@@ -6,14 +6,17 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import model.Memoria;
-import model.Planetas;
-
 public class FuncaoDeCadaBotao {
 
+	private String nomeDoArquivo;
+	
 	public int quantidadeDeBugs;
 	public int quantidadeDeDevs;
 
+	public String getNomeDoArquivo() {	
+		return nomeDoArquivo;
+	}
+	
 	public int getQuantidadeDeBugs() {
 		return quantidadeDeBugs;
 	}
@@ -71,6 +74,9 @@ public class FuncaoDeCadaBotao {
 			File arquivoSelecionado = fileChooser.getSelectedFile();
 
 			String diretorioDoArquivo = arquivoSelecionado.getAbsolutePath();
+			
+			nomeDoArquivo = arquivoSelecionado.getName();
+			
 
 			return new LerDadosDoArquivo().lerDadosDoArquivo(diretorioDoArquivo);
 

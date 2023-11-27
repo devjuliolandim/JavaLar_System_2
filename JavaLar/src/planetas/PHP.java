@@ -1,6 +1,6 @@
 package planetas;
 
-import model.Planetas;
+import controller.Planetas;
 
 public class PHP extends Planetas {
 
@@ -20,6 +20,8 @@ public class PHP extends Planetas {
 		setyInicial(12);
 		setOrbitaPermitida(4);
 		setDiretorioDeSuaImagem(DIRETORIO);
+		setImagem(DIRETORIO);
+
 		
 	}
 

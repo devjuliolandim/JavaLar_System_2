@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import model.Memoria;
+import controller.Memoria;
 
 public class Janela extends JFrame {
 

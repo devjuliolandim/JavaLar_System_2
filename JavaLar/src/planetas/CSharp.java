@@ -1,6 +1,6 @@
 package planetas;
 
-import model.Planetas;
+import controller.Planetas;
 
 public class CSharp extends Planetas {
 
@@ -19,6 +19,8 @@ public class CSharp extends Planetas {
 		setyInicial(13);
 		setOrbitaPermitida(5);
 		setDiretorioDeSuaImagem(DIRETORIO);
+		setImagem(DIRETORIO);
+
 		
 	}
 

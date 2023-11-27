@@ -23,7 +23,7 @@ public class Coordenada extends JPanel {
 		this.eixoX= posX;
 		this.eixoY = posY;
 		
-		//definirCoordenada(posX, posY);
+		definirCoordenada(posX, posY);
 		
 	}
 	
@@ -39,7 +39,7 @@ public class Coordenada extends JPanel {
 	private void definirCoordenada(int x, int y) {
 		
 		
-		parOrdenado = new JLabel("("+ y + ", " + x + ")");
+		parOrdenado = new JLabel("("+ x + ", " + y+ ")");
 		parOrdenado.setBackground(Color.black);
 		add(parOrdenado);
 		

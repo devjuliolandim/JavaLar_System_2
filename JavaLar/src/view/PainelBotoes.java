@@ -13,9 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import controller.FuncaoDeCadaBotao;
-import model.Memoria;
-import model.Planetas;
-import model.Utilidades;
+import controller.Memoria;
+import controller.Planetas;
+import controller.RelatorioGUI;
+import controller.Utilidades;
+import model.RelatorioDAO;
 
 public class PainelBotoes extends JPanel implements ActionListener {
 
@@ -31,6 +33,8 @@ public class PainelBotoes extends JPanel implements ActionListener {
 	private Memoria memoria;
 
 	private PainelDoPlano painelDoPlano;
+
+	private RelatorioGUI relatorio = new RelatorioGUI();
 
 	public PainelBotoes(Memoria memoria, PainelDoPlano painelPlanetas) {
 
@@ -64,7 +68,9 @@ public class PainelBotoes extends JPanel implements ActionListener {
 		lerNovoArquivoDeEntrada.addActionListener(this);
 		add(lerNovoArquivoDeEntrada);
 
+		gravarRelatorio.addActionListener(this);
 		add(gravarRelatorio);
+
 		add(lerDadosDeOutrosParticipantes);
 		add(gravarArquivoDeSaida);
 
@@ -74,11 +80,11 @@ public class PainelBotoes extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == processarProximoInstante) {
-			
+
 			funcaoDeCadaBotao.processarProximoInstante(infosDoArquivoSelecionado, memoria);
-			painelDoPlano.adicionarImagensDosBugs(funcaoDeCadaBotao.getQuantidadeDeBugs());	
+			painelDoPlano.adicionarImagensDosBugs(funcaoDeCadaBotao.getQuantidadeDeBugs());
 			painelDoPlano.adicionarImagemDosDevs(funcaoDeCadaBotao.getQuantidadeDeDevs());
-		
+
 			for (Coordenada coordenada : painelDoPlano.getCoordenadasOcupadasPorPlanetas()) {
 				coordenada.remove(coordenada.getImagem());
 			}
@@ -87,7 +93,11 @@ public class PainelBotoes extends JPanel implements ActionListener {
 		} else if (e.getSource() == lerNovoArquivoDeEntrada) {
 
 			infosDoArquivoSelecionado = funcaoDeCadaBotao.lerNovoArquivoDeEntrada();
-			
+
+		} else if (e.getSource() == gravarRelatorio) {
+
+			relatorio.setNomeArquivo(funcaoDeCadaBotao.getNomeDoArquivo());
+			relatorio.enviarRelatorioParaOBanco();
 
 		}
 

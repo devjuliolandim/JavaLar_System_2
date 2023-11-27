@@ -1,6 +1,6 @@
 package planetas;
 
-import model.Planetas;
+import controller.Planetas;
 
 public class Python extends Planetas {
 
@@ -20,6 +20,8 @@ public class Python extends Planetas {
 		setyInicial(9);
 		setOrbitaPermitida(1);
 		setDiretorioDeSuaImagem(DIRETORIO);
+		setImagem(DIRETORIO);
+
 	}
 
 

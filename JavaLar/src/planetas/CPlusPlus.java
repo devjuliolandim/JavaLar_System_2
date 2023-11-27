@@ -1,6 +1,6 @@
 package planetas;
 
-import model.Planetas;
+import controller.Planetas;
 
 public class CPlusPlus extends Planetas {
 
@@ -20,6 +20,8 @@ public class CPlusPlus extends Planetas {
 		setyInicial(14);
 		setOrbitaPermitida(6);
 		setDiretorioDeSuaImagem(DIRETORIO);
+		setImagem(DIRETORIO);
+
 	}
 
 }

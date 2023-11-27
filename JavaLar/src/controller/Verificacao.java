@@ -2,7 +2,6 @@ package controller;
 
 import java.util.ArrayList;
 
-import model.Planetas;
 import view.Coordenada;
 import view.PainelDoPlano;
 
@@ -17,54 +16,59 @@ public class Verificacao {
 
 	public void verificarColisaoComEntidadaes(Planetas planeta) {
 
-		
 		ArrayList<Coordenada> bugsASeremRemovidos = new ArrayList<>();
 		ArrayList<Coordenada> devsASeremRemovidos = new ArrayList<>();
-		
-		
+
 		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorBugs()) {
 
 			if ((coordenada.getEixoX() + 1) == planeta.getPosicaoY()
 					&& (coordenada.getEixoY() + 1) == planeta.getPosicaoX()) {
 
+				
+				System.out.println("O planeta " + planeta.getNome() + " bateu em um bug na posição (" + (coordenada.getEixoX()+1)  + ", " + (coordenada.getEixoY()+1)+ ")");
+				
+				
 				planeta.setVelocidade(planeta.getVelocidade() - 1);
+				planeta.setBugsCont(planeta.getBugsCont() + 1);
 
 				bugsASeremRemovidos.add(coordenada);
-				
-				
+
 			}
-			
+
+		}	
+		
+		
+		
+		
+		
+		
+		
+		if (bugsASeremRemovidos.size() >= 1) {
+
+			painel.getCoordenadasOcupadasPorBugs().remove(bugsASeremRemovidos);
 		}
 
-		
-		if(bugsASeremRemovidos.size() >=1) {
-			
-			painel.getCoordenadasOcupadasPorBugs().remove(bugsASeremRemovidos);		
-		}
-		
-		
 		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorDesenvolvedores()) {
 
 			if ((coordenada.getEixoX() + 1) == planeta.getPosicaoY()
 					&& (coordenada.getEixoY() + 1) == planeta.getPosicaoX()) {
 
-				planeta.setVelocidade(planeta.getVelocidade() - 1);
+				planeta.setVelocidade(planeta.getVelocidade() + 1);
+
+				planeta.setDevsCont(planeta.getDevsCont() + 1);
 
 				devsASeremRemovidos.add(coordenada);
-				
-				
+
 			}
-			
+
 		}
-		
-		if(devsASeremRemovidos.size() >= 1) {
-			
+
+		if (devsASeremRemovidos.size() >= 1) {
+
 			painel.getCoordenadasOcupadasPorDesenvolvedores().remove(devsASeremRemovidos);
-			
+
 		}
-		
-		
-		
+
 	}
 
 	public boolean verificarCoordenadaOcupada(int x, int y) {

@@ -1,6 +1,6 @@
 package planetas;
 
-import model.Planetas;
+import controller.Planetas;
 
 public class JavaScript extends Planetas {
 
@@ -20,6 +20,8 @@ public class JavaScript extends Planetas {
 		setyInicial(10);
 		setOrbitaPermitida(2);
 		setDiretorioDeSuaImagem(DIRETORIO);
+		setImagem(DIRETORIO);
+
 		
 	}
 
