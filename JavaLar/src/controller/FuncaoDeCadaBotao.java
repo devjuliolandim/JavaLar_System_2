@@ -6,8 +6,12 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import model.ObterDadosDoBanco;
+
 public class FuncaoDeCadaBotao {
 
+	private ObterDadosDoBanco obterDadosDoBanco = new ObterDadosDoBanco();
+	
 	private String nomeDoArquivo;
 	
 	public int quantidadeDeBugs;
@@ -24,6 +28,26 @@ public class FuncaoDeCadaBotao {
 	public int getQuantidadeDeDevs() {
 		return quantidadeDeDevs;
 	}
+	
+	public int[] getQuemTemMaisMorte() {
+		
+		return obterDadosDoBanco.getQuemTemMaisMortes();
+	}
+	
+	public int[] getQuemTemMaisVida() {
+		
+		return obterDadosDoBanco.getQuemTemMaisVidas();
+	}
+	
+	
+	public void lerDadosDeOutrosParticipantes() {
+		
+		obterDadosDoBanco.obterDadosDoBanco();
+		
+		
+	}
+	
+
 
 	public void processarProximoInstante(List<String[]> infos, Memoria memoria) {
 
@@ -85,4 +109,15 @@ public class FuncaoDeCadaBotao {
 
 	}
 
+	
+	public void gravaArquivoDeSaida() {
+		
+		
+		
+		
+	}
+	
+	
+	
+	
 }

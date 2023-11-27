@@ -179,7 +179,7 @@ public class PainelDoPlano extends JPanel {
 						if (planetas.getPosicaoX() == (j + 1) && planetas.getPosicaoY() == (i + 1)) {
 
 							coordenadas[i][j].setImagem(redimensionarImagens(planetas.getDiretorioDeSuaImagem()));
-
+	
 							coordenadasOcupadasPorPlanetas.add(coordenadas[i][j]);
 
 							revalidate();

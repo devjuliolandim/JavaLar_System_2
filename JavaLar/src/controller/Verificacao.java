@@ -24,10 +24,9 @@ public class Verificacao {
 			if ((coordenada.getEixoX() + 1) == planeta.getPosicaoY()
 					&& (coordenada.getEixoY() + 1) == planeta.getPosicaoX()) {
 
-				
-				System.out.println("O planeta " + planeta.getNome() + " bateu em um bug na posição (" + (coordenada.getEixoX()+1)  + ", " + (coordenada.getEixoY()+1)+ ")");
-				
-				
+				System.out.println("O planeta " + planeta.getNome() + " bateu em um bug na posição ("
+						+ (coordenada.getEixoX() + 1) + ", " + (coordenada.getEixoY() + 1) + ")");
+
 				planeta.setVelocidade(planeta.getVelocidade() - 1);
 				planeta.setBugsCont(planeta.getBugsCont() + 1);
 
@@ -35,14 +34,8 @@ public class Verificacao {
 
 			}
 
-		}	
-		
-		
-		
-		
-		
-		
-		
+		}
+
 		if (bugsASeremRemovidos.size() >= 1) {
 
 			painel.getCoordenadasOcupadasPorBugs().remove(bugsASeremRemovidos);
@@ -111,4 +104,5 @@ public class Verificacao {
 		return false;
 	}
 
+		
 }

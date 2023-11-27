@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="controller.Verificacao"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="model.Planetas"/>
     <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
-    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
-    <fullyQualifiedTypeName name="java.sql.SQLException"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="controller.RelatorioGUI"/>
     <fullyQualifiedTypeName name="model.RelatorioDAO"/>
     <fullyQualifiedTypeName name="view.PainelDoPlano"/>
+    <fullyQualifiedTypeName name="controller.Memoria"/>
+    <fullyQualifiedTypeName name="view.Coordenada"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="model.Conexao"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="controller.DadosDeCadaAluno"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="model.ObterDadosDoBanco"/>
+    <fullyQualifiedTypeName name="controller.LerDadosDeOutrosParticipantes"/>
 </qualifiedTypeNameHistroy>

@@ -10,13 +10,10 @@ import controller.Relatorio;
 
 public class RelatorioDAO {
 
-	private static final String URL = "jdbc:mysql://da_java.mysql.dbaas.com.br:3306/da_java";
-	private static final String USUARIO = "da_java";
-	private static final String SENHA = "Tecnicas*2023@";
 
 	public void salvarRelatorio(Relatorio relatorio, Memoria memoria) {
 
-		try (Connection conexao = DriverManager.getConnection(URL, USUARIO, SENHA)) {
+		try (Connection conexao = DriverManager.getConnection(Conexao.getUrl(), Conexao.getUsuario(), Conexao.getSenha())) {
 
 			String query = "INSERT INTO javalar (nome, matricula, nome_arquivo,bug_python, bug_javascript, bug_ruby, bug_php, bug_csharp, bug_cmais, bug_c,dev_python, dev_javascript, dev_ruby, dev_php, dev_csharp,dev_cmais, dev_c,v_python, v_javascript, v_ruby, v_php, v_csharp, v_cmais, v_c,d_python, d_javascript, d_ruby, d_php, d_csharp,d_cmais,d_c, a_python, a_javascript, a_ruby, a_php, a_csharp, a_cmais, a_c,bug_q1, bug_q2, bug_q3, bug_q4,dev_q1,dev_q2,dev_q3,dev_q4) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 

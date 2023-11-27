@@ -14,9 +14,9 @@ import javax.swing.SwingUtilities;
 
 import controller.FuncaoDeCadaBotao;
 import controller.Memoria;
+import controller.Perguntas;
 import controller.Planetas;
 import controller.Relatorio;
-import controller.Utilidades;
 import model.RelatorioDAO;
 
 public class PainelBotoes extends JPanel implements ActionListener {
@@ -36,6 +36,7 @@ public class PainelBotoes extends JPanel implements ActionListener {
 
 	private Relatorio relatorio;
 
+	
 	public PainelBotoes(Memoria memoria, PainelDoPlano painelPlanetas) {
 
 		this.painelDoPlano = painelPlanetas;
@@ -113,6 +114,27 @@ public class PainelBotoes extends JPanel implements ActionListener {
 
 		} else if (e.getSource() == lerDadosDeOutrosParticipantes) {
 
+			
+			funcaoDeCadaBotao.lerDadosDeOutrosParticipantes();
+			
+			
+		}else if (e.getSource() == gravarArquivoDeSaida) {
+			
+			
+			Perguntas pergunta = new Perguntas();
+			
+			pergunta.retornarPlanetaQueMaisMorreu(funcaoDeCadaBotao.getQuemTemMaisMorte());
+			pergunta.retornarPlanetaQueMaisViveu(funcaoDeCadaBotao.getQuemTemMaisVida());
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			
 			
