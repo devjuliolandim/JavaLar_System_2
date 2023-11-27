@@ -43,7 +43,7 @@ public class Simulacao {
 
 			if (planetas.size() == 0) {
 				System.out.println("Todos os planetas explodiram !");
-				Relatorio.relatorio(planetas, cova, somatorioDeInstantes);
+				//Relatorio.relatorio(planetas, cova, somatorioDeInstantes);
 				System.out.println("\n\nFim de simulação!");
 				break;
 			}
@@ -57,7 +57,7 @@ public class Simulacao {
 			opcao = scanner.nextInt();
 
 			if (opcao == 2) {
-				Relatorio.relatorio(planetas, cova, somatorioDeInstantes);
+				//Relatorio.relatorio(planetas, cova, somatorioDeInstantes);
 				System.out.println("\n\nFim de programa!");
 				
 			}

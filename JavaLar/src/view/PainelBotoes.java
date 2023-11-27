@@ -15,7 +15,7 @@ import javax.swing.SwingUtilities;
 import controller.FuncaoDeCadaBotao;
 import controller.Memoria;
 import controller.Planetas;
-import controller.RelatorioGUI;
+import controller.Relatorio;
 import controller.Utilidades;
 import model.RelatorioDAO;
 
@@ -34,13 +34,17 @@ public class PainelBotoes extends JPanel implements ActionListener {
 
 	private PainelDoPlano painelDoPlano;
 
-	private RelatorioGUI relatorio = new RelatorioGUI();
+	private Relatorio relatorio;
 
 	public PainelBotoes(Memoria memoria, PainelDoPlano painelPlanetas) {
 
 		this.painelDoPlano = painelPlanetas;
 		this.memoria = memoria;
 
+		
+		relatorio = new Relatorio(this.memoria);
+		
+		
 		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(250, 1000));
 		setLayout(new GridLayout(5, 1));
@@ -71,7 +75,10 @@ public class PainelBotoes extends JPanel implements ActionListener {
 		gravarRelatorio.addActionListener(this);
 		add(gravarRelatorio);
 
+		lerDadosDeOutrosParticipantes.addActionListener(this);
 		add(lerDadosDeOutrosParticipantes);
+
+		gravarArquivoDeSaida.addActionListener(this);
 		add(gravarArquivoDeSaida);
 
 	}
@@ -88,6 +95,7 @@ public class PainelBotoes extends JPanel implements ActionListener {
 			for (Coordenada coordenada : painelDoPlano.getCoordenadasOcupadasPorPlanetas()) {
 				coordenada.remove(coordenada.getImagem());
 			}
+
 			painelDoPlano.adicionarImagensDosPlanetas();
 
 		} else if (e.getSource() == lerNovoArquivoDeEntrada) {
@@ -98,6 +106,8 @@ public class PainelBotoes extends JPanel implements ActionListener {
 
 			relatorio.setNomeArquivo(funcaoDeCadaBotao.getNomeDoArquivo());
 			relatorio.enviarRelatorioParaOBanco();
+
+		} else if (e.getSource() == lerDadosDeOutrosParticipantes) {
 
 		}
 
