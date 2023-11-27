@@ -105,10 +105,17 @@ public class PainelBotoes extends JPanel implements ActionListener {
 		} else if (e.getSource() == gravarRelatorio) {
 
 			relatorio.setNomeArquivo(funcaoDeCadaBotao.getNomeDoArquivo());
+			
+			relatorio.relatorioQuadrantesBugs(painelDoPlano.getCoordenadasOcupadasPorBugs());
+			relatorio.relatorioQuadrantesDevs(painelDoPlano.getCoordenadasOcupadasPorDesenvolvedores());
+					
 			relatorio.enviarRelatorioParaOBanco();
 
 		} else if (e.getSource() == lerDadosDeOutrosParticipantes) {
 
+			
+			
+			
 		}
 
 	}
