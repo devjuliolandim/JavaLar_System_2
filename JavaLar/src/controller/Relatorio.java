@@ -75,7 +75,6 @@ public class Relatorio {
 
 	}
 
-
 	public void enviarRelatorioParaOBanco() {
 
 		relatorioDAO.salvarRelatorio(this, memoria);

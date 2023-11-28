@@ -13,7 +13,6 @@ import planetas.RubyOnRails;
 public class Memoria {
 
 	private ArrayList<Planetas> planetas = new ArrayList<>();
-	private ArrayList<Planetas> planetasVivos = new ArrayList<>();
 
 	Planetas python = new Python();
 	Planetas javaScript = new JavaScript();
@@ -26,7 +25,7 @@ public class Memoria {
 	public Memoria() {
 
 		adicionarAoArrayList();
-		adicionarPlanetasVivos();
+
 	}
 
 	private void adicionarAoArrayList() {
@@ -41,34 +40,6 @@ public class Memoria {
 
 	
 	
-	
-	public void adicionarPlanetasVivos() {
-
-		for (Planetas planetas : planetas) {
-
-			if (planetas.isVivoOuMorto()) {
-
-				planetasVivos.add(planetas);
-
-			}else {
-				
-				planetasVivos.remove(planetas);
-				
-			}
-
-		}
-
-	}
-
-		
-	public ArrayList<Planetas> getPlanetasVivos() {
-		return planetasVivos;
-	}
-
-	public void setPlanetasVivos(ArrayList<Planetas> planetasVivos) {
-		this.planetasVivos = planetasVivos;
-	}
-
 	public ArrayList<Planetas> getPlanetas() {
 		return planetas;
 	}

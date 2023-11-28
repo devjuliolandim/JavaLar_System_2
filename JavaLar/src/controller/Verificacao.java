@@ -2,6 +2,8 @@ package controller;
 
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
 import view.Coordenada;
 import view.PainelDoPlano;
 
@@ -32,13 +34,14 @@ public class Verificacao {
 
 				bugsASeremRemovidos.add(coordenada);
 
+				coordenada.remove(coordenada.getImagemBug());
 			}
 
 		}
 
 		if (bugsASeremRemovidos.size() >= 1) {
 
-			painel.getCoordenadasOcupadasPorBugs().remove(bugsASeremRemovidos);
+			painel.getCoordenadasOcupadasPorBugs().removeAll(bugsASeremRemovidos);
 		}
 
 		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorDesenvolvedores()) {
@@ -46,11 +49,16 @@ public class Verificacao {
 			if ((coordenada.getEixoX() + 1) == planeta.getPosicaoY()
 					&& (coordenada.getEixoY() + 1) == planeta.getPosicaoX()) {
 
+				System.out.println("O planeta " + planeta.getNome() + " bateu em um dev na posição ("
+						+ (coordenada.getEixoX() + 1) + ", " + (coordenada.getEixoY() + 1) + ")");
+
 				planeta.setVelocidade(planeta.getVelocidade() + 1);
 
 				planeta.setDevsCont(planeta.getDevsCont() + 1);
 
 				devsASeremRemovidos.add(coordenada);
+
+				coordenada.remove(coordenada.getImagemDev());
 
 			}
 
@@ -58,7 +66,7 @@ public class Verificacao {
 
 		if (devsASeremRemovidos.size() >= 1) {
 
-			painel.getCoordenadasOcupadasPorDesenvolvedores().remove(devsASeremRemovidos);
+			painel.getCoordenadasOcupadasPorDesenvolvedores().removeAll(devsASeremRemovidos);
 
 		}
 
@@ -104,5 +112,4 @@ public class Verificacao {
 		return false;
 	}
 
-		
 }

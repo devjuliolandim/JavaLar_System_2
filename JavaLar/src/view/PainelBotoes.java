@@ -89,7 +89,7 @@ public class PainelBotoes extends JPanel implements ActionListener {
 
 		if (e.getSource() == processarProximoInstante) {
 
-			funcaoDeCadaBotao.processarProximoInstante(infosDoArquivoSelecionado, memoria);
+			funcaoDeCadaBotao.processarProximoInstante(infosDoArquivoSelecionado, memoria, painelDoPlano);
 			painelDoPlano.adicionarImagensDosBugs(funcaoDeCadaBotao.getQuantidadeDeBugs());
 			painelDoPlano.adicionarImagemDosDevs(funcaoDeCadaBotao.getQuantidadeDeDevs());
 
@@ -110,7 +110,10 @@ public class PainelBotoes extends JPanel implements ActionListener {
 			relatorio.relatorioQuadrantesBugs(painelDoPlano.getCoordenadasOcupadasPorBugs());
 			relatorio.relatorioQuadrantesDevs(painelDoPlano.getCoordenadasOcupadasPorDesenvolvedores());
 					
-			relatorio.enviarRelatorioParaOBanco();
+			
+			relatorio.enviarRelatorioParaOBanco();	
+			
+			
 
 		} else if (e.getSource() == lerDadosDeOutrosParticipantes) {
 

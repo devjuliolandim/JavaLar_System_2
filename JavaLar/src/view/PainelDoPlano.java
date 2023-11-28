@@ -24,8 +24,6 @@ public class PainelDoPlano extends JPanel {
 	private static final int TAMANHO_DO_PLANO = 225;
 
 	private static final String DIRETORIO_IMAGEM_JAVA = "C:\\Users\\Júlio César\\Desktop\\FACULDADE\\2º SEMESTRE\\TÉCNICAS DE PROGRAMAÇÃO\\JavaLar\\Foto dos Planetas\\Java.png";
-	private static final String DIRETORIO_IMAGEM_BUG = "C:\\Users\\Júlio César\\Desktop\\FACULDADE\\2º SEMESTRE\\TÉCNICAS DE PROGRAMAÇÃO\\JavaLar\\Bugs e Devs\\Bug.png";
-	private static final String DIRETORIO_IMAGEM_DEV = "C:\\Users\\Júlio César\\Desktop\\FACULDADE\\2º SEMESTRE\\TÉCNICAS DE PROGRAMAÇÃO\\JavaLar\\Bugs e Devs\\Desenvolvedor.jpg";
 
 	private Coordenada[][] coordenadas;
 	private ArrayList<Coordenada> coordenadasOcupadasPorPlanetas = new ArrayList<>();
@@ -41,10 +39,6 @@ public class PainelDoPlano extends JPanel {
 	private Memoria memoria;
 
 	private Verificacao verificacao = new Verificacao(this);
-	
-//	private Bug bug = new Bug();
-//	private Desenvolvedor dev = new Desenvolvedor();
-	
 
 	public PainelDoPlano(Memoria memoria) {
 
@@ -109,7 +103,23 @@ public class PainelDoPlano extends JPanel {
 
 			addBugs(x, y);
 
-			coordenadasOcupadasPorBugs.add(new Coordenada(x, y));
+		}
+
+	}
+
+	private void addBugs(int x, int y) {
+
+		if (coordenadas[x][y] != null) {
+
+			coordenadas[x][y].setImagemBug(new Bug().getImagem());
+
+			coordenadas[x][y].setEixoX(x);
+			coordenadas[x][y].setEixoY(y);
+
+			coordenadasOcupadasPorBugs.add(coordenadas[x][y]);
+
+			coordenadas[x][y].revalidate();
+			coordenadas[x][y].repaint();
 
 		}
 
@@ -128,8 +138,6 @@ public class PainelDoPlano extends JPanel {
 
 			addDevs(x, y);
 
-			coordenadasOcupadasPorDesenvolvedores.add(new Coordenada(x, y));
-
 		}
 
 	}
@@ -137,19 +145,13 @@ public class PainelDoPlano extends JPanel {
 	public void addDevs(int x, int y) {
 
 		if (coordenadas[x][y] != null) {
-			coordenadas[x][y].add(new Desenvolvedor().getImagem());
+			coordenadas[x][y].setImagemDev(new Desenvolvedor().getImagem());
 
-			coordenadas[x][y].revalidate();
-			coordenadas[x][y].repaint();
-		}
+			coordenadas[x][y].setEixoX(x);
+			coordenadas[x][y].setEixoY(y);
 
-	}
+			coordenadasOcupadasPorDesenvolvedores.add(coordenadas[x][y]);
 
-	private void addBugs(int x, int y) {
-
-		if (coordenadas[x][y] != null) {
-
-			coordenadas[x][y].add(new Bug().getImagem());	
 			coordenadas[x][y].revalidate();
 			coordenadas[x][y].repaint();
 		}
@@ -159,7 +161,7 @@ public class PainelDoPlano extends JPanel {
 	public void adicionarImagensDosPlanetas() {
 
 		for (int i = 0; i < TAMANHO_DO_GRID; i++) {
-			for (int j = 0; j < TAMANHO_DO_GRID; j++) {		
+			for (int j = 0; j < TAMANHO_DO_GRID; j++) {
 				for (Planetas planetas : memoria.getPlanetas()) {
 
 					if (planetas.isVivoOuMorto() == true) {
@@ -167,7 +169,7 @@ public class PainelDoPlano extends JPanel {
 						if (planetas.getPosicaoX() == (j + 1) && planetas.getPosicaoY() == (i + 1)) {
 
 							coordenadas[i][j].setImagem(planetas.getImagem());
-	
+
 							coordenadasOcupadasPorPlanetas.add(coordenadas[i][j]);
 
 							revalidate();
@@ -177,12 +179,12 @@ public class PainelDoPlano extends JPanel {
 
 							// TESTE
 
-							if (planetas.getVelocidade() == 0) {				
-								
+							if (planetas.getVelocidade() == 0) {
+
 								System.out.println("O planeta " + planetas.getNome() + " morreu");
-								
+
 								planetas.setVivoOuMorto(false);
-								coordenadas[i][j].remove(label);
+								coordenadas[i][j].remove(planetas.getImagem());
 								coordenadasOcupadasPorPlanetas.remove(coordenadas[i][j]);
 							}
 
@@ -198,7 +200,6 @@ public class PainelDoPlano extends JPanel {
 
 	}
 
-	
 	public Coordenada[][] getCoordenadas() {
 		return coordenadas;
 	}

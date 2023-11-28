@@ -18,7 +18,7 @@ public class Desenvolvedor {
 	
 	private void setImagem() {
 
-		ImageIcon imgDev = new ImageIcon("Bugs e Devs\\Desenvolvedor.png");
+		ImageIcon imgDev = new ImageIcon("Bugs e Devs\\Desenvolvedor.jpg");
 
 		Image imagemRedimensionada;
 

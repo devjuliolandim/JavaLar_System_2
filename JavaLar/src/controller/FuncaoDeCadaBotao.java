@@ -9,6 +9,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import model.GravarArquivoDeSaida;
 import model.LerDadosDoArquivo;
 import model.ObterDadosDoBanco;
+import view.PainelDoPlano;
 
 public class FuncaoDeCadaBotao {
 
@@ -37,7 +38,7 @@ public class FuncaoDeCadaBotao {
 
 	}
 
-	public void processarProximoInstante(List<String[]> infos, Memoria memoria) {
+	public void processarProximoInstante(List<String[]> infos, Memoria memoria, PainelDoPlano painel) {
 
 		if (!infos.isEmpty()) {
 
@@ -52,6 +53,9 @@ public class FuncaoDeCadaBotao {
 					Planetas planeta = memoria.getPlanetas().get(i - 1);
 
 					planeta.mover(instantes);
+					
+					//new Verificacao(painel).verificarColisaoComEntidadaes(planeta);
+					
 
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
