@@ -13,9 +13,6 @@ import planetas.RubyOnRails;
 public class Memoria {
 
 	private ArrayList<Planetas> planetas = new ArrayList<>();
-	private ArrayList<Bug> bugs = new ArrayList<>();
-	private ArrayList<Desenvolvedor> desenvolvedores = new ArrayList<>();
-
 	private ArrayList<Planetas> planetasVivos = new ArrayList<>();
 
 	Planetas python = new Python();
@@ -80,20 +77,5 @@ public class Memoria {
 		this.planetas = planetas;
 	}
 
-	public ArrayList<Bug> getBugs() {
-		return bugs;
-	}
-
-	public void setBugs(ArrayList<Bug> bugs) {
-		this.bugs = bugs;
-	}
-
-	public ArrayList<Desenvolvedor> getDesenvolvedores() {
-		return desenvolvedores;
-	}
-
-	public void setDesenvolvedores(ArrayList<Desenvolvedor> desenvolvedores) {
-		this.desenvolvedores = desenvolvedores;
-	}
 
 }

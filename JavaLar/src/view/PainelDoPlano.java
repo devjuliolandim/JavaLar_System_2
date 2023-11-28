@@ -14,6 +14,8 @@ import javax.swing.border.LineBorder;
 import controller.Memoria;
 import controller.Planetas;
 import controller.Verificacao;
+import controller.Bug;
+import controller.Desenvolvedor;
 
 public class PainelDoPlano extends JPanel {
 
@@ -39,6 +41,10 @@ public class PainelDoPlano extends JPanel {
 	private Memoria memoria;
 
 	private Verificacao verificacao = new Verificacao(this);
+	
+//	private Bug bug = new Bug();
+//	private Desenvolvedor dev = new Desenvolvedor();
+	
 
 	public PainelDoPlano(Memoria memoria) {
 
@@ -131,16 +137,7 @@ public class PainelDoPlano extends JPanel {
 	public void addDevs(int x, int y) {
 
 		if (coordenadas[x][y] != null) {
-			imagem = new ImageIcon(DIRETORIO_IMAGEM_DEV);
-
-			imagemRedimensionada = imagem.getImage().getScaledInstance(TAMANHO_DA_IMAGEM, TAMANHO_DA_IMAGEM,
-					Image.SCALE_SMOOTH);
-
-			imagem = new ImageIcon(imagemRedimensionada);
-
-			label = new JLabel(imagem);
-
-			coordenadas[x][y].add(label);
+			coordenadas[x][y].add(new Desenvolvedor().getImagem());
 
 			coordenadas[x][y].revalidate();
 			coordenadas[x][y].repaint();
@@ -151,17 +148,8 @@ public class PainelDoPlano extends JPanel {
 	private void addBugs(int x, int y) {
 
 		if (coordenadas[x][y] != null) {
-			imagem = new ImageIcon(DIRETORIO_IMAGEM_BUG);
 
-			imagemRedimensionada = imagem.getImage().getScaledInstance(TAMANHO_DA_IMAGEM, TAMANHO_DA_IMAGEM,
-					Image.SCALE_SMOOTH);
-
-			imagem = new ImageIcon(imagemRedimensionada);
-
-			label = new JLabel(imagem);
-
-			coordenadas[x][y].add(label);
-			
+			coordenadas[x][y].add(new Bug().getImagem());	
 			coordenadas[x][y].revalidate();
 			coordenadas[x][y].repaint();
 		}
@@ -178,7 +166,7 @@ public class PainelDoPlano extends JPanel {
 
 						if (planetas.getPosicaoX() == (j + 1) && planetas.getPosicaoY() == (i + 1)) {
 
-							coordenadas[i][j].setImagem(redimensionarImagens(planetas.getDiretorioDeSuaImagem()));
+							coordenadas[i][j].setImagem(planetas.getImagem());
 	
 							coordenadasOcupadasPorPlanetas.add(coordenadas[i][j]);
 

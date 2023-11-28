@@ -4,7 +4,7 @@ import controller.Planetas;
 
 public class Python extends Planetas {
 
-	public static final String DIRETORIO = "C:\\Users\\Júlio César\\Desktop\\FACULDADE\\2º SEMESTRE\\TÉCNICAS DE PROGRAMAÇÃO\\JavaLar\\Foto dos Planetas\\Python.png";
+	public static final String DIRETORIO = "Foto dos Planetas\\Python.png";
 
 	
 	public Python() {

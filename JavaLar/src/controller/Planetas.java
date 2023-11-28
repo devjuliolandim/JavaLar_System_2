@@ -3,6 +3,7 @@ package controller;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public abstract class Planetas  {
 
@@ -19,22 +20,26 @@ public abstract class Planetas  {
 	protected int yInicial;
 	protected String diretorioDeSuaImagem;
 	protected boolean vivoOuMorto;
-	protected ImageIcon imagem;
+	protected JLabel imagem;
 	
 	
-	public ImageIcon getImagem(int x, int y) {
-		
-		Image imagemRedimensionada = imagem.getImage().getScaledInstance(x, y,Image.SCALE_SMOOTH);
-
-		imagem = new ImageIcon(imagemRedimensionada);
+	public JLabel getImagem() {
 		
 		return imagem;
 	}
 
 	public void setImagem(String diretorioDoArquivo) {
 		
-		this.imagem = new ImageIcon(diretorioDoArquivo);
-	
+		ImageIcon imgPlaneta = new ImageIcon(diretorioDoArquivo);
+		
+		Image imagemRedimensionada;
+
+		imagemRedimensionada = imgPlaneta.getImage().getScaledInstance(35, 35,
+				Image.SCALE_SMOOTH);
+
+		imgPlaneta = new ImageIcon(imagemRedimensionada);
+
+		imagem = new JLabel(imgPlaneta);
 
 	}
 
