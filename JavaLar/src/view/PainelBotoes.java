@@ -122,10 +122,6 @@ public class PainelBotoes extends JPanel implements ActionListener {
 			
 			
 			Respostas respostas = new Respostas();
-//			
-//			pergunta.retornarPlanetaQueMaisMorreu(funcaoDeCadaBotao.getQuemTemMaisMorte());
-//			pergunta.retornarPlanetaQueMaisViveu(funcaoDeCadaBotao.getQuemTemMaisVida());
-//			
 			
 			
 			funcaoDeCadaBotao.gravaArquivoDeSaida(respostas);

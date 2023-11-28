@@ -75,9 +75,6 @@ public class Relatorio {
 
 	}
 
-	public void lerDoBancoDeDados() {
-
-	}
 
 	public void enviarRelatorioParaOBanco() {
 

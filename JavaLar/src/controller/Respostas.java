@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -36,7 +37,6 @@ public class Respostas {
 		
 		return matriculaMaisRepetida;
 	}
-	
 
 	public String retornarPlanetaQueMaisMorreu(int[] planetasComMaisMortes) {
 
@@ -132,7 +132,6 @@ public class Respostas {
 
 	}
 
-	
 	public String retornarQuadranteBugs(int[] quadranteBugs) {
 		
 		int maior = 0;
@@ -173,6 +172,98 @@ public class Respostas {
 		return null;
 	}
 	
+	public String retornarQuadranteDevs(int[] quadranteDevs) {
+		
+		int maior = 0;
+		
+		for(int i = 0; i<4; i++) {
+			
+			if(quadranteDevs[i]> quadranteDevs[maior]) {
+				
+				maior = i;
+			}
+		
+			
+		}
+		
+		
+		if(maior == 0) {
+			
+			return "1";
+		
+		}else if(maior == 1) {
+			
+			return "2";
+		
+		}else if(maior == 2) {
+			
+			return "3";
+		
+		}else if (maior == 3) {
+			
+			return "4";
+		}
+		
+		
+		
+		
+		
+		
+		return null;
+	}
+	
+	public String retornarInstantesAnalisadosPelaTurma(int instantes) {
+		
+		String resposta = String.valueOf(instantes);
+		
+		return resposta;
+	}
+
+	
+	public List<String> retornarListaDasVelocidades(int[] velocidades, int instantes){
+		
+		List<String> lista = new ArrayList<>();
+		
+		String[] linguagens = {"Python: " , "JavaScript: ","Ruby on Rails: ","PHP: ","C#: ","C++: ","C: "};
+		
+		float[] velocidadesMedias = new float[7];
+		
+		for(int i = 0; i<7; i++) {
+			
+			velocidadesMedias[i] =(float) velocidades[i]/instantes; 
+			
+		}
+		
+		
+		for(int i = 0 ; i <7; i++) {
+			
+			
+			lista.add(i, linguagens[i] + String.valueOf(velocidadesMedias[i]));
+			
+			
+		}
+	
+		
+		
+		return lista;
+		
+	}
+	
+	
+	public String retornarBugsGerados(int somatorioBugs) {
+		
+		String somatorio = String.valueOf(somatorioBugs);
+		
+		
+		return somatorio;
+		
+	}
+	public String retornarDevsGerados(int somatorioDevs) {
+		
+		String somatorio = String.valueOf(somatorioDevs);
+		
+		return somatorio;
+	}
 	
 	
 }
