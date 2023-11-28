@@ -12,8 +12,21 @@ import controller.DadosDeCadaAluno;
 
 public class ObterDadosDoBanco {
 
+	
+	
+	private List<DadosDeCadaAluno> lista = new ArrayList<>();
+	
+	
 	private int[] quemTemMaisMortes = { 0, 0, 0, 0, 0, 0, 0 };
 	private int[] quemTemMaisVida = { 0, 0, 0, 0, 0, 0, 0 };
+	private int[] qualQuadranteBugs = {0,0,0,0};
+	
+	
+
+	
+	public List<DadosDeCadaAluno> getLista() {
+		return lista;
+	}
 
 	public int[] getQuemTemMaisMortes() {
 		return quemTemMaisMortes;
@@ -22,14 +35,23 @@ public class ObterDadosDoBanco {
 	public int[] getQuemTemMaisVidas() {
 		
 		return quemTemMaisVida;
+		
 	}
+	
+	public int[] getQualQuadranteBugs() {
+		
+		return qualQuadranteBugs;
+	}
+	
+	
 
 	public void obterDadosDoBanco() {
 
-		List<DadosDeCadaAluno> lista = new ArrayList<>();
-
 		int[] verificacaoDeMortes = { 0, 0, 0, 0, 0, 0, 0 };
 		int[] verificacaoDeVidas = { 0, 0, 0, 0, 0, 0, 0 };
+		int[] auxiliarBugs = {0,0,0,0};
+		
+		
 
 		try (Connection conexao = DriverManager.getConnection(Conexao.getUrl(), Conexao.getUsuario(),
 				Conexao.getSenha())) {
@@ -42,12 +64,15 @@ public class ObterDadosDoBanco {
 
 					while (resultSet.next()) {
 
-						DadosDeCadaAluno dadosAluno = new DadosDeCadaAluno(resultSet.getString("nome"),
-								resultSet.getString("matricula"));
+						DadosDeCadaAluno dadosAluno = new DadosDeCadaAluno(resultSet.getString("nome"), resultSet.getString("matricula"));
 
 						quemTemMaisMortes(verificacaoDeMortes, resultSet);
 
 						quemTemMaisVida(verificacaoDeVidas, resultSet);
+						
+						qualQuadranteTemMaisBugs(auxiliarBugs, resultSet);
+						
+						
 
 						lista.add(dadosAluno);
 
@@ -61,6 +86,36 @@ public class ObterDadosDoBanco {
 			e.printStackTrace();
 		}
 
+	}
+
+	private void qualQuadranteTemMaisBugs(int[] auxiliarBugs, ResultSet resultSet) throws SQLException {
+		auxiliarBugs[0] = resultSet.getInt("bug_q1");
+		auxiliarBugs[1] = resultSet.getInt("bug_q2");
+		auxiliarBugs[2] = resultSet.getInt("bug_q3");
+		auxiliarBugs[3] = resultSet.getInt("bug_q4");
+		
+		
+		int maior = 0;
+		
+		for(int i = 0; i < 4; i++) {
+			
+			if(auxiliarBugs[i] > auxiliarBugs[maior]) {
+				
+				maior = i;
+				
+			}
+			
+		}
+		
+		for(int i = 0; i<4; i++) {
+			
+			if(maior == i) {
+				
+				qualQuadranteBugs[i]++;
+				
+			}
+			
+		}
 	}
 
 	private void quemTemMaisVida(int[] verificacaoDeVidas, ResultSet resultSet) throws SQLException {

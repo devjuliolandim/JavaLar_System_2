@@ -16,8 +16,18 @@
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="controller.DadosDeCadaAluno"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.util.Map"/>
-    <fullyQualifiedTypeName name="model.ObterDadosDoBanco"/>
     <fullyQualifiedTypeName name="controller.LerDadosDeOutrosParticipantes"/>
+    <fullyQualifiedTypeName name="controller.Perguntas"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="javax.swing.filechooser.FileNameExtensionFilter"/>
+    <fullyQualifiedTypeName name="javax.swing.JFileChooser"/>
+    <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
+    <fullyQualifiedTypeName name="java.io.FileWriter"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="controller.Respostas"/>
+    <fullyQualifiedTypeName name="model.ObterDadosDoBanco"/>
+    <fullyQualifiedTypeName name="model.GravarArquivoDeSaida"/>
 </qualifiedTypeNameHistroy>

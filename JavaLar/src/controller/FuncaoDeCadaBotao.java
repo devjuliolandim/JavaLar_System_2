@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import model.GravarArquivoDeSaida;
 import model.ObterDadosDoBanco;
 
 public class FuncaoDeCadaBotao {
@@ -110,9 +111,9 @@ public class FuncaoDeCadaBotao {
 	}
 
 	
-	public void gravaArquivoDeSaida() {
+	public void gravaArquivoDeSaida(Respostas respostas) {
 		
-		
+		new GravarArquivoDeSaida(respostas, obterDadosDoBanco);
 		
 		
 	}
