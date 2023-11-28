@@ -219,7 +219,6 @@ public class Respostas {
 		return resposta;
 	}
 
-	
 	public List<String> retornarListaDasVelocidades(int[] velocidades, int instantes){
 		
 		List<String> lista = new ArrayList<>();
@@ -249,7 +248,6 @@ public class Respostas {
 		
 	}
 	
-	
 	public String retornarBugsGerados(int somatorioBugs) {
 		
 		String somatorio = String.valueOf(somatorioBugs);
@@ -258,6 +256,7 @@ public class Respostas {
 		return somatorio;
 		
 	}
+	
 	public String retornarDevsGerados(int somatorioDevs) {
 		
 		String somatorio = String.valueOf(somatorioDevs);
@@ -265,5 +264,23 @@ public class Respostas {
 		return somatorio;
 	}
 	
+	public String retornarHorasTotais(int somatorioHoras) {
+		
+		String somatorio = String.valueOf(somatorioHoras);
+		
+		return somatorio;
+	}
+
+	public String retornarAnosTotais(int somatorioAnos) {
+		
+		String somatorio = String.valueOf(somatorioAnos);
+		
+		return somatorio;
+		
+	}
+
 	
+	
+
+
 }

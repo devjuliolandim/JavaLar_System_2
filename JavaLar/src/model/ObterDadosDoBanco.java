@@ -26,6 +26,10 @@ public class ObterDadosDoBanco {
 	private int somatorioBugs = 0;
 
 	private int somatorioDevs = 0;
+	
+	private int somatorioHoras = 0;
+	
+	private int somatorioAnos = 0;
 
 	public List<DadosDeCadaAluno> getLista() {
 		return lista;
@@ -69,12 +73,26 @@ public class ObterDadosDoBanco {
 		return somatorioDevs;
 	}
 
+	public int getSomatorioHoras() {
+		
+		return somatorioHoras;
+	}
+	
+	public int getSomatorioAnos() {
+		
+		return somatorioDevs;
+	}
+	
 	public void obterDadosDoBanco() {
 
-		int[] verificacaoDeMortes = { 0, 0, 0, 0, 0, 0, 0 };
-		int[] verificacaoDeVidas = { 0, 0, 0, 0, 0, 0, 0 };
+		int[] auxiliarMortes = { 0, 0, 0, 0, 0, 0, 0 };
+		int[] auxiliarQuemMaisViveu = { 0, 0, 0, 0, 0, 0, 0 };
 		int[] auxiliarBugs = { 0, 0, 0, 0 };
 		int[] auxiliarDevs = { 0, 0, 0, 0 };
+		int[] auxiliarHoras = new int[7];
+		int[] auxiliarAnos = new int[7];
+		
+		
 
 		try (Connection conexao = DriverManager.getConnection(Conexao.getUrl(), Conexao.getUsuario(),
 				Conexao.getSenha())) {
@@ -90,9 +108,9 @@ public class ObterDadosDoBanco {
 						DadosDeCadaAluno dadosAluno = new DadosDeCadaAluno(resultSet.getString("nome"),
 								resultSet.getString("matricula"));
 
-						quemTemMaisMortes(verificacaoDeMortes, resultSet);
+						quemTemMaisMortes(auxiliarMortes, resultSet);
 
-						quemTemMaisVida(verificacaoDeVidas, resultSet);
+						quemTemMaisVida(auxiliarQuemMaisViveu, resultSet);
 
 						qualQuadranteTemMaisBugs(auxiliarBugs, resultSet);
 
@@ -102,17 +120,13 @@ public class ObterDadosDoBanco {
 
 						somatorioVelocidades(resultSet);
 
-						for (int i = 0; i < 4; i++) {
+						somatorioBugs(auxiliarBugs);
 
-							somatorioBugs += auxiliarBugs[i];
-
-						}
-
-						for (int i = 0; i < 4; i++) {
-
-							somatorioDevs += auxiliarDevs[i];
-
-						}
+						somatorioDevs(auxiliarDevs);
+						
+						somatorioHoras(auxiliarHoras, resultSet);
+						
+						somatorioAnos(auxiliarAnos, resultSet);
 
 						lista.add(dadosAluno);
 
@@ -126,6 +140,55 @@ public class ObterDadosDoBanco {
 			e.printStackTrace();
 		}
 
+	}
+
+	private void somatorioAnos(int[] auxiliarAnos, ResultSet resultSet) throws SQLException {
+		auxiliarAnos[0] = resultSet.getInt("a_python");
+		auxiliarAnos[1] = resultSet.getInt("a_javascript");
+		auxiliarAnos[2] = resultSet.getInt("a_ruby");
+		auxiliarAnos[3] = resultSet.getInt("a_php");
+		auxiliarAnos[4] = resultSet.getInt("a_csharp");
+		auxiliarAnos[5] = resultSet.getInt("a_cmais");
+		auxiliarAnos[6] = resultSet.getInt("a_c");
+		
+		
+		for(int i = 0 ; i < 7; i++) {
+			
+			somatorioAnos += auxiliarAnos[i];
+			
+		}
+	}
+
+	private void somatorioHoras(int[] auxiliarHoras, ResultSet resultSet) throws SQLException {
+		auxiliarHoras[0] = resultSet.getInt("d_python");
+		auxiliarHoras[1] = resultSet.getInt("d_javascript");
+		auxiliarHoras[2] = resultSet.getInt("d_ruby");
+		auxiliarHoras[3] = resultSet.getInt("d_php");
+		auxiliarHoras[4] = resultSet.getInt("d_csharp");
+		auxiliarHoras[5] = resultSet.getInt("d_cmais");
+		auxiliarHoras[6] = resultSet.getInt("d_c");
+		
+		for(int i = 0 ; i < 7; i++) {
+			
+			somatorioHoras += auxiliarHoras[i];
+			
+		}
+	}
+
+	private void somatorioDevs(int[] auxiliarDevs) {
+		for (int i = 0; i < 4; i++) {
+
+			somatorioDevs += auxiliarDevs[i];
+
+		}
+	}
+
+	private void somatorioBugs(int[] auxiliarBugs) {
+		for (int i = 0; i < 4; i++) {
+
+			somatorioBugs += auxiliarBugs[i];
+
+		}
 	}
 
 	private void somatorioVelocidades(ResultSet resultSet) throws SQLException {

@@ -7,21 +7,22 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.GravarArquivoDeSaida;
+import model.LerDadosDoArquivo;
 import model.ObterDadosDoBanco;
 
 public class FuncaoDeCadaBotao {
 
 	private ObterDadosDoBanco obterDadosDoBanco = new ObterDadosDoBanco();
-	
+
 	private String nomeDoArquivo;
-	
+
 	public int quantidadeDeBugs;
 	public int quantidadeDeDevs;
 
-	public String getNomeDoArquivo() {	
+	public String getNomeDoArquivo() {
 		return nomeDoArquivo;
 	}
-	
+
 	public int getQuantidadeDeBugs() {
 		return quantidadeDeBugs;
 	}
@@ -29,26 +30,12 @@ public class FuncaoDeCadaBotao {
 	public int getQuantidadeDeDevs() {
 		return quantidadeDeDevs;
 	}
-	
-	public int[] getQuemTemMaisMorte() {
-		
-		return obterDadosDoBanco.getQuemTemMaisMortes();
-	}
-	
-	public int[] getQuemTemMaisVida() {
-		
-		return obterDadosDoBanco.getQuemTemMaisVidas();
-	}
-	
-	
-	public void lerDadosDeOutrosParticipantes() {
-		
-		obterDadosDoBanco.obterDadosDoBanco();
-		
-		
-	}
-	
 
+	public void lerDadosDeOutrosParticipantes() {
+
+		obterDadosDoBanco.obterDadosDoBanco();
+
+	}
 
 	public void processarProximoInstante(List<String[]> infos, Memoria memoria) {
 
@@ -99,9 +86,8 @@ public class FuncaoDeCadaBotao {
 			File arquivoSelecionado = fileChooser.getSelectedFile();
 
 			String diretorioDoArquivo = arquivoSelecionado.getAbsolutePath();
-			
+
 			nomeDoArquivo = arquivoSelecionado.getName();
-			
 
 			return new LerDadosDoArquivo().lerDadosDoArquivo(diretorioDoArquivo);
 
@@ -110,15 +96,10 @@ public class FuncaoDeCadaBotao {
 
 	}
 
-	
 	public void gravaArquivoDeSaida(Respostas respostas) {
-		
+
 		new GravarArquivoDeSaida(respostas, obterDadosDoBanco);
-		
-		
+
 	}
-	
-	
-	
-	
+
 }

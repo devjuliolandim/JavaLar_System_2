@@ -25,6 +25,8 @@ public class GravarArquivoDeSaida {
 	
 	private String somatorioBugs;
 	private String somatorioDevs;
+	private String somatorioHoras;
+	private String somatorioAnos;
 
 	public GravarArquivoDeSaida(Respostas resposta, ObterDadosDoBanco obter) {
 
@@ -51,7 +53,7 @@ public class GravarArquivoDeSaida {
 					escrever.write(velocidadesMedias.get(i) + ", ");
 				}
 				
-				escrever.write(somatorioBugs + ", " + somatorioDevs);
+				escrever.write(somatorioBugs + ", " + somatorioDevs + ", " + somatorioHoras + ", " + somatorioAnos);
 
 			} catch (IOException e) {
 
@@ -73,6 +75,10 @@ public class GravarArquivoDeSaida {
 		velocidadesMedias = resposta.retornarListaDasVelocidades(obter.getSomatorioVelocidades(), obter.getInstantes());
 		somatorioBugs = resposta.retornarBugsGerados(obter.getSomatorioBugs());
 		somatorioDevs = resposta.retornarDevsGerados(obter.getSomatorioDevs());
+		somatorioHoras = resposta.retornarHorasTotais(obter.getSomatorioHoras());
+		somatorioAnos = resposta.retornarAnosTotais(obter.getSomatorioAnos());
+		
+		
 	
 	}
 
