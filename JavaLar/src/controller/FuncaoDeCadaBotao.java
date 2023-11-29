@@ -8,12 +8,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import model.GravarArquivoDeSaida;
 import model.LerDadosDoArquivo;
-import model.ObterDadosDoBanco;
+import model.LerDadosDeOutrosParticipantes;
 import view.PainelDoPlano;
 
 public class FuncaoDeCadaBotao {
 
-	private ObterDadosDoBanco obterDadosDoBanco = new ObterDadosDoBanco();
+	private LerDadosDeOutrosParticipantes obterDadosDoBanco = new LerDadosDeOutrosParticipantes();
 
 	private String nomeDoArquivo;
 

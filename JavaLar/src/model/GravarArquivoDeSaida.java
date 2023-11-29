@@ -28,7 +28,7 @@ public class GravarArquivoDeSaida {
 	private String somatorioHoras;
 	private String somatorioAnos;
 
-	public GravarArquivoDeSaida(Respostas resposta, ObterDadosDoBanco obter) {
+	public GravarArquivoDeSaida(Respostas resposta, LerDadosDeOutrosParticipantes obter) {
 
 		preencherVariaveis(resposta, obter);
 
@@ -64,7 +64,7 @@ public class GravarArquivoDeSaida {
 
 	}
 
-	private void preencherVariaveis(Respostas resposta, ObterDadosDoBanco obter) {
+	private void preencherVariaveis(Respostas resposta, LerDadosDeOutrosParticipantes obter) {
 		matricula = resposta.retornarMatricula(obter.getLista());
 		nome = resposta.retornarNome(obter.getLista());
 		planetaMaisMorreu = resposta.retornarPlanetaQueMaisMorreu(obter.getQuemTemMaisMortes());

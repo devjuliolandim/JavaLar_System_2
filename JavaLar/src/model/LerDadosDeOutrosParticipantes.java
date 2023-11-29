@@ -10,7 +10,7 @@ import java.util.List;
 
 import controller.DadosDeCadaAluno;
 
-public class ObterDadosDoBanco {
+public class LerDadosDeOutrosParticipantes {
 
 	private List<DadosDeCadaAluno> lista = new ArrayList<>();
 
@@ -157,6 +157,26 @@ public class ObterDadosDoBanco {
 			somatorioAnos += auxiliarAnos[i];
 			
 		}
+		
+		
+		
+//		String[] anos = {"a_python","a_javascript","a_ruby","a_php","a_csharp","a_cmais","a_c" };
+//		
+//		
+//		for(int i = 0; i<7;i++ ) {
+//			auxiliarAnos[i] = resultSet.getInt(anos[i]);
+//			somatorioAnos += auxiliarAnos[i];
+//		
+//		}
+//		
+//		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 	private void somatorioHoras(int[] auxiliarHoras, ResultSet resultSet) throws SQLException {

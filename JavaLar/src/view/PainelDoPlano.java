@@ -7,6 +7,7 @@ import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -33,9 +34,9 @@ public class PainelDoPlano extends JPanel {
 
 	private Verificacao verificacao = new Verificacao(this);
 
-	private static final ImageIcon BUG = new Bug().getImagem();
-	private static final ImageIcon DEV = new Desenvolvedor().getImagem();
-	private static final ImageIcon JAVA = new Java().getImagem();
+	private static final ImageIcon BUG_ICONE = new Bug().getImagem();
+	private static final ImageIcon DEV_ICONE = new Desenvolvedor().getImagem();
+	private static final ImageIcon JAVA_ICONE = new Java().getImagem();
 
 	public PainelDoPlano(Memoria memoria) {
 
@@ -57,7 +58,7 @@ public class PainelDoPlano extends JPanel {
 				coordenadas[i][j] = new Coordenada((i + 1), (j + 1));
 
 				if ((i + 1) == 8 && (j + 1) == 8) {
-					coordenadas[i][j].add(new JLabel(JAVA));
+					coordenadas[i][j].add(new JLabel(JAVA_ICONE));
 				}
 
 				add(coordenadas[i][j]);
@@ -68,7 +69,7 @@ public class PainelDoPlano extends JPanel {
 	}
 
 	public void adicionarImagensDosBugs(int quantidadeDeBugs) {
-
+		
 		for (int i = 0; i < quantidadeDeBugs; i++) {
 			int x, y;
 
@@ -86,7 +87,7 @@ public class PainelDoPlano extends JPanel {
 
 	private void addBugs(int x, int y) {
 
-		coordenadas[x][y].setImagemBug(new JLabel(BUG));
+		coordenadas[x][y].setImagemBug(new JLabel(BUG_ICONE));
 
 		coordenadas[x][y].setEixoX(x);
 		coordenadas[x][y].setEixoY(y);
@@ -117,7 +118,7 @@ public class PainelDoPlano extends JPanel {
 
 	public void addDevs(int x, int y) {
 
-		coordenadas[x][y].setImagemDev(new JLabel(DEV));
+		coordenadas[x][y].setImagemDev(new JLabel(DEV_ICONE));
 
 		coordenadas[x][y].setEixoX(x);
 		coordenadas[x][y].setEixoY(y);
@@ -148,15 +149,11 @@ public class PainelDoPlano extends JPanel {
 
 							verificacao.verificarColisaoComEntidadaes(planetas);
 
-							// TESTE
-
 							if (planetas.getVelocidade() == 0) {
-
-								System.out.println("O planeta " + planetas.getNome() + " morreu");
-
 								planetas.setVivoOuMorto(false);
 								coordenadas[i][j].remove(planetas.getImagem());
 								coordenadasOcupadasPorPlanetas.remove(coordenadas[i][j]);
+
 							}
 
 						}
@@ -169,10 +166,6 @@ public class PainelDoPlano extends JPanel {
 
 		}
 
-	}
-
-	public Coordenada[][] getCoordenadas() {
-		return coordenadas;
 	}
 
 	public ArrayList<Coordenada> getCoordenadasOcupadasPorPlanetas() {
