@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -16,29 +15,27 @@ import controller.Planetas;
 import controller.Verificacao;
 import controller.Bug;
 import controller.Desenvolvedor;
+import controller.Java;
 
 public class PainelDoPlano extends JPanel {
 
 	private static final int TAMANHO_DO_GRID = 15;
-	private static final int TAMANHO_DA_IMAGEM = 35;
 	private static final int TAMANHO_DO_PLANO = 225;
-
-	private static final String DIRETORIO_IMAGEM_JAVA = "C:\\Users\\Júlio César\\Desktop\\FACULDADE\\2º SEMESTRE\\TÉCNICAS DE PROGRAMAÇÃO\\JavaLar\\Foto dos Planetas\\Java.png";
 
 	private Coordenada[][] coordenadas;
 	private ArrayList<Coordenada> coordenadasOcupadasPorPlanetas = new ArrayList<>();
 	private ArrayList<Coordenada> coordenadasOcupadasPorBugs = new ArrayList<>();
 	private ArrayList<Coordenada> coordenadasOcupadasPorDesenvolvedores = new ArrayList<>();
 
-	private ImageIcon imagem;
-	private Image imagemRedimensionada;
-	private JLabel label;
-
 	private Random random = new Random();
 
 	private Memoria memoria;
 
 	private Verificacao verificacao = new Verificacao(this);
+
+	private static final ImageIcon BUG = new Bug().getImagem();
+	private static final ImageIcon DEV = new Desenvolvedor().getImagem();
+	private static final ImageIcon JAVA = new Java().getImagem();
 
 	public PainelDoPlano(Memoria memoria) {
 
@@ -60,33 +57,13 @@ public class PainelDoPlano extends JPanel {
 				coordenadas[i][j] = new Coordenada((i + 1), (j + 1));
 
 				if ((i + 1) == 8 && (j + 1) == 8) {
-					adicionarImagemJava();
+					coordenadas[i][j].add(new JLabel(JAVA));
 				}
 
 				add(coordenadas[i][j]);
 			}
 
 		}
-
-	}
-
-	private JLabel redimensionarImagens(String diretorio) {
-
-		imagem = new ImageIcon(diretorio);
-
-		imagemRedimensionada = imagem.getImage().getScaledInstance(TAMANHO_DA_IMAGEM, TAMANHO_DA_IMAGEM,
-				Image.SCALE_SMOOTH);
-
-		imagem = new ImageIcon(imagemRedimensionada);
-
-		label = new JLabel(imagem);
-
-		return label;
-	}
-
-	private void adicionarImagemJava() {
-
-		coordenadas[7][7].add(redimensionarImagens(DIRETORIO_IMAGEM_JAVA));
 
 	}
 
@@ -109,19 +86,15 @@ public class PainelDoPlano extends JPanel {
 
 	private void addBugs(int x, int y) {
 
-		if (coordenadas[x][y] != null) {
+		coordenadas[x][y].setImagemBug(new JLabel(BUG));
 
-			coordenadas[x][y].setImagemBug(new Bug().getImagem());
+		coordenadas[x][y].setEixoX(x);
+		coordenadas[x][y].setEixoY(y);
 
-			coordenadas[x][y].setEixoX(x);
-			coordenadas[x][y].setEixoY(y);
+		coordenadasOcupadasPorBugs.add(coordenadas[x][y]);
 
-			coordenadasOcupadasPorBugs.add(coordenadas[x][y]);
-
-			coordenadas[x][y].revalidate();
-			coordenadas[x][y].repaint();
-
-		}
+		coordenadas[x][y].revalidate();
+		coordenadas[x][y].repaint();
 
 	}
 
@@ -144,17 +117,15 @@ public class PainelDoPlano extends JPanel {
 
 	public void addDevs(int x, int y) {
 
-		if (coordenadas[x][y] != null) {
-			coordenadas[x][y].setImagemDev(new Desenvolvedor().getImagem());
+		coordenadas[x][y].setImagemDev(new JLabel(DEV));
 
-			coordenadas[x][y].setEixoX(x);
-			coordenadas[x][y].setEixoY(y);
+		coordenadas[x][y].setEixoX(x);
+		coordenadas[x][y].setEixoY(y);
 
-			coordenadasOcupadasPorDesenvolvedores.add(coordenadas[x][y]);
+		coordenadasOcupadasPorDesenvolvedores.add(coordenadas[x][y]);
 
-			coordenadas[x][y].revalidate();
-			coordenadas[x][y].repaint();
-		}
+		coordenadas[x][y].revalidate();
+		coordenadas[x][y].repaint();
 
 	}
 
@@ -202,10 +173,6 @@ public class PainelDoPlano extends JPanel {
 
 	public Coordenada[][] getCoordenadas() {
 		return coordenadas;
-	}
-
-	public void setCoordenadas(Coordenada[][] coordenadas) {
-		this.coordenadas = coordenadas;
 	}
 
 	public ArrayList<Coordenada> getCoordenadasOcupadasPorPlanetas() {

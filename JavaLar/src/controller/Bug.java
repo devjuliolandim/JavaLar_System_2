@@ -1,38 +1,13 @@
 package controller;
 
-import java.awt.Image;
+public class Bug extends Entidades {
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
-public class Bug {
-
-	private JLabel imagem;
+	private String diretorio = "Bugs e Devs\\Bug.png";
 
 	public Bug() {
-	
-		setImagem();
-		
-	}
-	
-	
-	private void setImagem() {
 
-		ImageIcon imgBug = new ImageIcon("Bugs e Devs\\Bug.png");
+		setImagem(diretorio);
 
-		Image imagemRedimensionada;
-
-		imagemRedimensionada = imgBug.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
-
-		imgBug = new ImageIcon(imagemRedimensionada);
-
-		imagem = new JLabel(imgBug);
-
-	}
-
-	public JLabel getImagem() {
-
-		return this.imagem;
 	}
 
 }

@@ -2,8 +2,6 @@ package controller;
 
 import java.util.ArrayList;
 
-import javax.swing.JLabel;
-
 import view.Coordenada;
 import view.PainelDoPlano;
 

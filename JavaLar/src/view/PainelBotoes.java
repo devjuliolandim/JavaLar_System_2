@@ -36,16 +36,13 @@ public class PainelBotoes extends JPanel implements ActionListener {
 
 	private Relatorio relatorio;
 
-	
 	public PainelBotoes(Memoria memoria, PainelDoPlano painelPlanetas) {
 
 		this.painelDoPlano = painelPlanetas;
 		this.memoria = memoria;
 
-		
 		relatorio = new Relatorio(this.memoria);
-		
-		
+
 		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(250, 1000));
 		setLayout(new GridLayout(5, 1));
@@ -106,39 +103,22 @@ public class PainelBotoes extends JPanel implements ActionListener {
 		} else if (e.getSource() == gravarRelatorio) {
 
 			relatorio.setNomeArquivo(funcaoDeCadaBotao.getNomeDoArquivo());
-			
+
 			relatorio.relatorioQuadrantesBugs(painelDoPlano.getCoordenadasOcupadasPorBugs());
 			relatorio.relatorioQuadrantesDevs(painelDoPlano.getCoordenadasOcupadasPorDesenvolvedores());
-					
-			
-			relatorio.enviarRelatorioParaOBanco();	
-			
-			
+
+			relatorio.enviarRelatorioParaOBanco();
 
 		} else if (e.getSource() == lerDadosDeOutrosParticipantes) {
 
-			
 			funcaoDeCadaBotao.lerDadosDeOutrosParticipantes();
-			
-			
-		}else if (e.getSource() == gravarArquivoDeSaida) {
-			
-			
+
+		} else if (e.getSource() == gravarArquivoDeSaida) {
+
 			Respostas respostas = new Respostas();
-			
-			
+
 			funcaoDeCadaBotao.gravaArquivoDeSaida(respostas);
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 		}
 
 	}

@@ -1,39 +1,15 @@
 package controller;
 
-import java.awt.Image;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
-public class Desenvolvedor {
+public class Desenvolvedor extends Entidades {
 
-	private JLabel imagem;
-	
+	private String diretorio = "Bugs e Devs\\Desenvolvedor.jpg";
+
 	public Desenvolvedor() {
-		
-		
-		setImagem();
-		
-	}
-	
-	private void setImagem() {
 
-		ImageIcon imgDev = new ImageIcon("Bugs e Devs\\Desenvolvedor.jpg");
-
-		Image imagemRedimensionada;
-
-		imagemRedimensionada = imgDev.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH);
-
-		imgDev = new ImageIcon(imagemRedimensionada);
-
-		imagem = new JLabel(imgDev);
+		setImagem(diretorio);
 
 	}
-	
-	public JLabel getImagem() {
-		
-		return this.imagem;
-	}
 
-	
 }
