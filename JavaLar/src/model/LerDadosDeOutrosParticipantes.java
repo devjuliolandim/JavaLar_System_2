@@ -26,9 +26,9 @@ public class LerDadosDeOutrosParticipantes {
 	private int somatorioBugs = 0;
 
 	private int somatorioDevs = 0;
-	
+
 	private int somatorioHoras = 0;
-	
+
 	private int somatorioAnos = 0;
 
 	public List<DadosDeCadaAluno> getLista() {
@@ -74,15 +74,15 @@ public class LerDadosDeOutrosParticipantes {
 	}
 
 	public int getSomatorioHoras() {
-		
+
 		return somatorioHoras;
 	}
-	
+
 	public int getSomatorioAnos() {
-		
+
 		return somatorioDevs;
 	}
-	
+
 	public void obterDadosDoBanco() {
 
 		int[] auxiliarMortes = { 0, 0, 0, 0, 0, 0, 0 };
@@ -91,8 +91,6 @@ public class LerDadosDeOutrosParticipantes {
 		int[] auxiliarDevs = { 0, 0, 0, 0 };
 		int[] auxiliarHoras = new int[7];
 		int[] auxiliarAnos = new int[7];
-		
-		
 
 		try (Connection conexao = DriverManager.getConnection(Conexao.getUrl(), Conexao.getUsuario(),
 				Conexao.getSenha())) {
@@ -123,9 +121,9 @@ public class LerDadosDeOutrosParticipantes {
 						somatorioBugs(auxiliarBugs);
 
 						somatorioDevs(auxiliarDevs);
-						
+
 						somatorioHoras(auxiliarHoras, resultSet);
-						
+
 						somatorioAnos(auxiliarAnos, resultSet);
 
 						lista.add(dadosAluno);
@@ -143,56 +141,28 @@ public class LerDadosDeOutrosParticipantes {
 	}
 
 	private void somatorioAnos(int[] auxiliarAnos, ResultSet resultSet) throws SQLException {
-		auxiliarAnos[0] = resultSet.getInt("a_python");
-		auxiliarAnos[1] = resultSet.getInt("a_javascript");
-		auxiliarAnos[2] = resultSet.getInt("a_ruby");
-		auxiliarAnos[3] = resultSet.getInt("a_php");
-		auxiliarAnos[4] = resultSet.getInt("a_csharp");
-		auxiliarAnos[5] = resultSet.getInt("a_cmais");
-		auxiliarAnos[6] = resultSet.getInt("a_c");
-		
-		
-		for(int i = 0 ; i < 7; i++) {
-			
+
+		String[] anos = { "a_python", "a_javascript", "a_ruby", "a_php", "a_csharp", "a_cmais", "a_c" };
+
+		for (int i = 0; i < 7; i++) {
+			auxiliarAnos[i] = resultSet.getInt(anos[i]);
 			somatorioAnos += auxiliarAnos[i];
-			
+
 		}
-		
-		
-		
-//		String[] anos = {"a_python","a_javascript","a_ruby","a_php","a_csharp","a_cmais","a_c" };
-//		
-//		
-//		for(int i = 0; i<7;i++ ) {
-//			auxiliarAnos[i] = resultSet.getInt(anos[i]);
-//			somatorioAnos += auxiliarAnos[i];
-//		
-//		}
-//		
-//		
-		
-		
-		
-		
-		
-		
-		
+
 	}
 
 	private void somatorioHoras(int[] auxiliarHoras, ResultSet resultSet) throws SQLException {
-		auxiliarHoras[0] = resultSet.getInt("d_python");
-		auxiliarHoras[1] = resultSet.getInt("d_javascript");
-		auxiliarHoras[2] = resultSet.getInt("d_ruby");
-		auxiliarHoras[3] = resultSet.getInt("d_php");
-		auxiliarHoras[4] = resultSet.getInt("d_csharp");
-		auxiliarHoras[5] = resultSet.getInt("d_cmais");
-		auxiliarHoras[6] = resultSet.getInt("d_c");
-		
-		for(int i = 0 ; i < 7; i++) {
-			
+
+		String[] horas = { "d_python", "d_javascript", "d_ruby", "d_php", "d_csharp", "d_cmais", "d_c" };
+
+		for (int i = 0; i < 7; i++) {
+
+			auxiliarHoras[i] = resultSet.getInt(horas[i]);
 			somatorioHoras += auxiliarHoras[i];
-			
+
 		}
+
 	}
 
 	private void somatorioDevs(int[] auxiliarDevs) {
@@ -212,14 +182,14 @@ public class LerDadosDeOutrosParticipantes {
 	}
 
 	private void somatorioVelocidades(ResultSet resultSet) throws SQLException {
-		somatorioDaVelocidadesDeCadaPlaneta[0] = resultSet.getInt("v_python") + somatorioDaVelocidadesDeCadaPlaneta[0];
-		somatorioDaVelocidadesDeCadaPlaneta[1] = resultSet.getInt("v_javascript")
-				+ somatorioDaVelocidadesDeCadaPlaneta[1];
-		somatorioDaVelocidadesDeCadaPlaneta[2] = resultSet.getInt("v_ruby") + somatorioDaVelocidadesDeCadaPlaneta[2];
-		somatorioDaVelocidadesDeCadaPlaneta[3] = resultSet.getInt("v_php") + somatorioDaVelocidadesDeCadaPlaneta[3];
-		somatorioDaVelocidadesDeCadaPlaneta[4] = resultSet.getInt("v_csharp") + somatorioDaVelocidadesDeCadaPlaneta[4];
-		somatorioDaVelocidadesDeCadaPlaneta[5] = resultSet.getInt("v_cmais") + somatorioDaVelocidadesDeCadaPlaneta[5];
-		somatorioDaVelocidadesDeCadaPlaneta[6] = resultSet.getInt("v_c") + somatorioDaVelocidadesDeCadaPlaneta[6];
+
+		String[] velocidades = { "v_python", "v_javascript", "v_ruby", "v_php", "v_csharp", "v_cmais", "v_c" };
+
+		for (int i = 0; i < 7; i++) {
+			somatorioDaVelocidadesDeCadaPlaneta[i] += resultSet.getInt(velocidades[i]);
+
+		}
+
 	}
 
 	private void qualQuadranteTemMaisDevs(int[] auxiliarDevs, ResultSet resultSet) throws SQLException {
