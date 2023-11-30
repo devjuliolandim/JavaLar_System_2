@@ -21,8 +21,7 @@ public class GravarArquivoDeSaida {
 	private String instantesDaTurma;
 
 	private List<String> velocidadesMedias;
-	
-	
+
 	private String somatorioBugs;
 	private String somatorioDevs;
 	private String somatorioHoras;
@@ -52,7 +51,7 @@ public class GravarArquivoDeSaida {
 				for (int i = 0; i < 7; i++) {
 					escrever.write(velocidadesMedias.get(i) + ", ");
 				}
-				
+
 				escrever.write(somatorioBugs + ", " + somatorioDevs + ", " + somatorioHoras + ", " + somatorioAnos);
 
 			} catch (IOException e) {
@@ -77,9 +76,7 @@ public class GravarArquivoDeSaida {
 		somatorioDevs = resposta.retornarDevsGerados(obter.getSomatorioDevs());
 		somatorioHoras = resposta.retornarHorasTotais(obter.getSomatorioHoras());
 		somatorioAnos = resposta.retornarAnosTotais(obter.getSomatorioAnos());
-		
-		
-	
+
 	}
 
 }

@@ -193,21 +193,21 @@ public class LerDadosDeOutrosParticipantes {
 	}
 
 	private void qualQuadranteTemMaisDevs(int[] auxiliarDevs, ResultSet resultSet) throws SQLException {
-		auxiliarDevs[0] = resultSet.getInt("dev_q1");
-		auxiliarDevs[1] = resultSet.getInt("dev_q2");
-		auxiliarDevs[2] = resultSet.getInt("dev_q3");
-		auxiliarDevs[3] = resultSet.getInt("dev_q4");
-
+			
+		String[] devs = {"dev_q1","dev_q2","dev_q3","dev_q4" };
+		
 		int maior = 0;
-
-		for (int i = 0; i < 4; i++) {
-
+		
+		
+		for(int i = 0; i<4;i++) {
+			
+			auxiliarDevs[i] = resultSet.getInt(devs[i]);
 			if (auxiliarDevs[i] > auxiliarDevs[maior]) {
 
 				maior = i;
 
 			}
-
+			
 		}
 
 		for (int i = 0; i < 4; i++) {
@@ -251,18 +251,13 @@ public class LerDadosDeOutrosParticipantes {
 	}
 
 	private void quemTemMaisVida(int[] verificacaoDeVidas, ResultSet resultSet) throws SQLException {
-		verificacaoDeVidas[0] = resultSet.getInt("v_python");
-		verificacaoDeVidas[1] = resultSet.getInt("v_javascript");
-		verificacaoDeVidas[2] = resultSet.getInt("v_ruby");
-		verificacaoDeVidas[3] = resultSet.getInt("v_php");
-		verificacaoDeVidas[4] = resultSet.getInt("v_csharp");
-		verificacaoDeVidas[5] = resultSet.getInt("v_cmais");
-		verificacaoDeVidas[6] = resultSet.getInt("v_c");
+
+		String[] velocidades = { "v_python", "v_javascript", "v_ruby", "v_php", "v_csharp", "v_cmais", "v_c" };
 
 		int maior = 0;
 
 		for (int i = 0; i < 7; i++) {
-
+			verificacaoDeVidas[i] = resultSet.getInt(velocidades[i]);
 			if (verificacaoDeVidas[i] > verificacaoDeVidas[maior]) {
 
 				maior = i;
@@ -270,6 +265,7 @@ public class LerDadosDeOutrosParticipantes {
 			}
 
 		}
+
 
 		for (int i = 0; i < 7; i++) {
 
@@ -282,21 +278,19 @@ public class LerDadosDeOutrosParticipantes {
 	}
 
 	private void quemTemMaisMortes(int[] verificacaoDeMortes, ResultSet resultSet) throws SQLException {
-		verificacaoDeMortes[0] = resultSet.getInt("v_python");
-		verificacaoDeMortes[1] = resultSet.getInt("v_javascript");
-		verificacaoDeMortes[2] = resultSet.getInt("v_ruby");
-		verificacaoDeMortes[3] = resultSet.getInt("v_php");
-		verificacaoDeMortes[4] = resultSet.getInt("v_csharp");
-		verificacaoDeMortes[5] = resultSet.getInt("v_cmais");
-		verificacaoDeMortes[6] = resultSet.getInt("v_c");
+
+		String[] velocidades = { "v_python", "v_javascript", "v_ruby", "v_php", "v_csharp", "v_cmais", "v_c" };
 
 		for (int i = 0; i < 7; i++) {
+
+			verificacaoDeMortes[i] = resultSet.getInt(velocidades[i]);
 
 			if (verificacaoDeMortes[i] == 0) {
 				quemTemMaisMortes[i]++;
 			}
 
 		}
+
 	}
 
 }
