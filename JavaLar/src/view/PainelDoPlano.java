@@ -42,7 +42,7 @@ public class PainelDoPlano extends JPanel {
 
 		this.memoria = memoria;
 
-		setBorder(new LineBorder(Color.gray, 5));
+		setBorder(new LineBorder(Color.gray, 10));
 		setLayout(new GridLayout(TAMANHO_DO_GRID, TAMANHO_DO_GRID));
 
 		coordenadas = new Coordenada[TAMANHO_DO_PLANO][TAMANHO_DO_PLANO];

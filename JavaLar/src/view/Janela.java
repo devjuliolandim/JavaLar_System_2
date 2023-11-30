@@ -3,13 +3,12 @@ package view;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import controller.Memoria;
 
 public class Janela extends JFrame {
 
-	private PainelDoPlano exibirPlanetas;
+	private PainelDoPlano painelDoPlano;
 	private PainelBotoes painelDeBotoes;
 
 	public static Memoria memoria = new Memoria();
@@ -30,10 +29,10 @@ public class Janela extends JFrame {
 
 	public void configurarPaineis() {
 
-		exibirPlanetas = new PainelDoPlano(memoria);
-		add(exibirPlanetas, BorderLayout.CENTER);
+		painelDoPlano = new PainelDoPlano(memoria);
+		add(painelDoPlano, BorderLayout.CENTER);
 
-		painelDeBotoes = new PainelBotoes(memoria, exibirPlanetas);
+		painelDeBotoes = new PainelBotoes(memoria, painelDoPlano);
 		add(painelDeBotoes, BorderLayout.EAST);
 
 	}

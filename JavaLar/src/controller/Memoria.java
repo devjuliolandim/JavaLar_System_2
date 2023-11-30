@@ -14,13 +14,13 @@ public class Memoria {
 
 	private ArrayList<Planetas> planetas = new ArrayList<>();
 
-	Planetas python = new Python();
-	Planetas javaScript = new JavaScript();
-	Planetas ROR = new RubyOnRails();
-	Planetas php = new PHP();
-	Planetas csharp = new CSharp();
-	Planetas cplusplus = new CPlusPlus();
-	Planetas c = new C();
+	private Planetas python = new Python();
+	private Planetas javaScript = new JavaScript();
+	private Planetas ROR = new RubyOnRails();
+	private Planetas php = new PHP();
+	private Planetas csharp = new CSharp();
+	private Planetas cplusplus = new CPlusPlus();
+	private Planetas c = new C();
 
 	public Memoria() {
 
@@ -43,10 +43,5 @@ public class Memoria {
 	public ArrayList<Planetas> getPlanetas() {
 		return planetas;
 	}
-
-	public void setPlanetas(ArrayList<Planetas> planetas) {
-		this.planetas = planetas;
-	}
-
 
 }
