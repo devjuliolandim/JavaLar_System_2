@@ -9,6 +9,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import model.GravarArquivoDeSaida;
 import model.LerDadosDoArquivo;
 import model.LerDadosDeOutrosParticipantes;
+import view.Coordenada;
 import view.PainelDoPlano;
 
 public class FuncaoDeCadaBotao {
@@ -31,17 +32,16 @@ public class FuncaoDeCadaBotao {
 	public int getQuantidadeDeDevs() {
 		return quantidadeDeDevs;
 	}
-	
+
 	public void gravarRelatorio(Relatorio relatorio, PainelDoPlano painelDoPlano) {
-		
+
 		relatorio.setNomeArquivo(getNomeDoArquivo());
 
 		relatorio.relatorioQuadrantesBugs(painelDoPlano.getCoordenadasOcupadasPorBugs());
 		relatorio.relatorioQuadrantesDevs(painelDoPlano.getCoordenadasOcupadasPorDesenvolvedores());
 
 		relatorio.enviarRelatorioParaOBanco();
-		
-		
+
 	}
 
 	public void lerDadosDeOutrosParticipantes() {
@@ -50,7 +50,7 @@ public class FuncaoDeCadaBotao {
 
 	}
 
-	public void processarProximoInstante(List<String[]> infos, Memoria memoria, PainelDoPlano painel) {
+	public void interpretarDadosLidos(List<String[]> infos, Memoria memoria, PainelDoPlano painel) {
 
 		if (!infos.isEmpty()) {
 
@@ -65,7 +65,6 @@ public class FuncaoDeCadaBotao {
 					Planetas planeta = memoria.getPlanetas().get(i - 1);
 
 					planeta.mover(instantes);
-					
 
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
@@ -113,6 +112,22 @@ public class FuncaoDeCadaBotao {
 	public void gravaArquivoDeSaida(Respostas respostas) {
 
 		new GravarArquivoDeSaida(respostas, obterDadosDoBanco);
+
+	}
+
+	public void processarProximoInstante(List<String[]> infosDoArquivoSelecionado, Memoria memoria,
+			PainelDoPlano painelDoPlano) {
+
+		interpretarDadosLidos(infosDoArquivoSelecionado, memoria, painelDoPlano);
+
+		painelDoPlano.adicionarImagensDosBugs(getQuantidadeDeBugs());
+		painelDoPlano.adicionarImagemDosDevs(getQuantidadeDeDevs());
+
+		for (Coordenada coordenada : painelDoPlano.getCoordenadasOcupadasPorPlanetas()) {
+			coordenada.remove(coordenada.getImagem());
+		}
+
+		painelDoPlano.adicionarImagensDosPlanetas();
 
 	}
 

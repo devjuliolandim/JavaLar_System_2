@@ -22,6 +22,7 @@ public class PainelBotoes extends JPanel implements ActionListener {
 	private Botao gravarRelatorio;
 	private Botao lerDadosDeOutrosParticipantes;
 	private Botao gravarArquivoDeSaida;
+	
 	private FuncaoDeCadaBotao funcaoDeCadaBotao = new FuncaoDeCadaBotao();
 
 	private List<String[]> infosDoArquivoSelecionado;
@@ -83,14 +84,6 @@ public class PainelBotoes extends JPanel implements ActionListener {
 		if (e.getSource() == processarProximoInstante) {
 
 			funcaoDeCadaBotao.processarProximoInstante(infosDoArquivoSelecionado, memoria, painelDoPlano);
-			painelDoPlano.adicionarImagensDosBugs(funcaoDeCadaBotao.getQuantidadeDeBugs());
-			painelDoPlano.adicionarImagemDosDevs(funcaoDeCadaBotao.getQuantidadeDeDevs());
-
-			for (Coordenada coordenada : painelDoPlano.getCoordenadasOcupadasPorPlanetas()) {
-				coordenada.remove(coordenada.getImagem());
-			}
-
-			painelDoPlano.adicionarImagensDosPlanetas();
 
 		} else if (e.getSource() == lerNovoArquivoDeEntrada) {
 
