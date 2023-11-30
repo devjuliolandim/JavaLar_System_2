@@ -80,7 +80,7 @@ public class LerDadosDeOutrosParticipantes {
 
 	public int getSomatorioAnos() {
 
-		return somatorioDevs;
+		return somatorioAnos;
 	}
 
 	public void obterDadosDoBanco() {
@@ -193,21 +193,20 @@ public class LerDadosDeOutrosParticipantes {
 	}
 
 	private void qualQuadranteTemMaisDevs(int[] auxiliarDevs, ResultSet resultSet) throws SQLException {
-			
-		String[] devs = {"dev_q1","dev_q2","dev_q3","dev_q4" };
-		
+
+		String[] devs = { "dev_q1", "dev_q2", "dev_q3", "dev_q4" };
+
 		int maior = 0;
-		
-		
-		for(int i = 0; i<4;i++) {
-			
+
+		for (int i = 0; i < 4; i++) {
+
 			auxiliarDevs[i] = resultSet.getInt(devs[i]);
 			if (auxiliarDevs[i] > auxiliarDevs[maior]) {
 
 				maior = i;
 
 			}
-			
+
 		}
 
 		for (int i = 0; i < 4; i++) {
@@ -222,19 +221,18 @@ public class LerDadosDeOutrosParticipantes {
 	}
 
 	private void qualQuadranteTemMaisBugs(int[] auxiliarBugs, ResultSet resultSet) throws SQLException {
-		auxiliarBugs[0] = resultSet.getInt("bug_q1");
-		auxiliarBugs[1] = resultSet.getInt("bug_q2");
-		auxiliarBugs[2] = resultSet.getInt("bug_q3");
-		auxiliarBugs[3] = resultSet.getInt("bug_q4");
+
+		String[] bugs = { "bug_q1", "bug_q2", "bug_q3", "bug_q4" };
 
 		int maior = 0;
 
 		for (int i = 0; i < 4; i++) {
 
+			auxiliarBugs[i] = resultSet.getInt(bugs[i]);
+
 			if (auxiliarBugs[i] > auxiliarBugs[maior]) {
 
 				maior = i;
-
 			}
 
 		}
@@ -265,7 +263,6 @@ public class LerDadosDeOutrosParticipantes {
 			}
 
 		}
-
 
 		for (int i = 0; i < 7; i++) {
 
