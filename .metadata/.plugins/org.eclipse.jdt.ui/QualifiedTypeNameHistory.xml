@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="controller.Verificacao"/>
     <fullyQualifiedTypeName name="model.Planetas"/>
-    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
     <fullyQualifiedTypeName name="controller.RelatorioGUI"/>
     <fullyQualifiedTypeName name="model.RelatorioDAO"/>
     <fullyQualifiedTypeName name="controller.Memoria"/>
@@ -34,4 +33,7 @@
     <fullyQualifiedTypeName name="controller.Desenvolvedor"/>
     <fullyQualifiedTypeName name="view.PainelDoPlano"/>
     <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+    <fullyQualifiedTypeName name="controller.Java"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 </qualifiedTypeNameHistroy>

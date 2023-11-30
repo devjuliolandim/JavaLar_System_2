@@ -31,6 +31,18 @@ public class FuncaoDeCadaBotao {
 	public int getQuantidadeDeDevs() {
 		return quantidadeDeDevs;
 	}
+	
+	public void gravarRelatorio(Relatorio relatorio, PainelDoPlano painelDoPlano) {
+		
+		relatorio.setNomeArquivo(getNomeDoArquivo());
+
+		relatorio.relatorioQuadrantesBugs(painelDoPlano.getCoordenadasOcupadasPorBugs());
+		relatorio.relatorioQuadrantesDevs(painelDoPlano.getCoordenadasOcupadasPorDesenvolvedores());
+
+		relatorio.enviarRelatorioParaOBanco();
+		
+		
+	}
 
 	public void lerDadosDeOutrosParticipantes() {
 
@@ -53,8 +65,6 @@ public class FuncaoDeCadaBotao {
 					Planetas planeta = memoria.getPlanetas().get(i - 1);
 
 					planeta.mover(instantes);
-					
-					//new Verificacao(painel).verificarColisaoComEntidadaes(planeta);
 					
 
 				} catch (NumberFormatException e) {

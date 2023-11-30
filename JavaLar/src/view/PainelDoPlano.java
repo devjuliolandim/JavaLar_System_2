@@ -150,9 +150,13 @@ public class PainelDoPlano extends JPanel {
 							verificacao.verificarColisaoComEntidadaes(planetas);
 
 							if (planetas.getVelocidade() == 0) {
+								
+								JOptionPane.showMessageDialog(null, "O planeta " + planetas.getNome() + " explodiu", "Um planeta explodiu :'(", JOptionPane.INFORMATION_MESSAGE);
+								
 								planetas.setVivoOuMorto(false);
 								coordenadas[i][j].remove(planetas.getImagem());
 								coordenadasOcupadasPorPlanetas.remove(coordenadas[i][j]);
+								
 
 							}
 

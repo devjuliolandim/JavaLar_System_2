@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import controller.DadosDeCadaAluno;
 
 public class LerDadosDeOutrosParticipantes {
@@ -129,6 +131,8 @@ public class LerDadosDeOutrosParticipantes {
 						lista.add(dadosAluno);
 
 					}
+					
+					//JOptionPane.showMessageDialog(null, "Todos os dados dos participantes foram lidos com sucesso!", "Todos os dados foram lidos!", JOptionPane.INFORMATION_MESSAGE);
 
 				}
 

@@ -6,18 +6,14 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Scanner;
 
-import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import controller.FuncaoDeCadaBotao;
 import controller.Memoria;
 import controller.Respostas;
-import controller.Planetas;
+
 import controller.Relatorio;
-import model.RelatorioDAO;
 
 public class PainelBotoes extends JPanel implements ActionListener {
 
@@ -102,12 +98,7 @@ public class PainelBotoes extends JPanel implements ActionListener {
 
 		} else if (e.getSource() == gravarRelatorio) {
 
-			relatorio.setNomeArquivo(funcaoDeCadaBotao.getNomeDoArquivo());
-
-			relatorio.relatorioQuadrantesBugs(painelDoPlano.getCoordenadasOcupadasPorBugs());
-			relatorio.relatorioQuadrantesDevs(painelDoPlano.getCoordenadasOcupadasPorDesenvolvedores());
-
-			relatorio.enviarRelatorioParaOBanco();
+			funcaoDeCadaBotao.gravarRelatorio(relatorio, painelDoPlano);
 
 		} else if (e.getSource() == lerDadosDeOutrosParticipantes) {
 
@@ -115,9 +106,7 @@ public class PainelBotoes extends JPanel implements ActionListener {
 
 		} else if (e.getSource() == gravarArquivoDeSaida) {
 
-			Respostas respostas = new Respostas();
-
-			funcaoDeCadaBotao.gravaArquivoDeSaida(respostas);
+			funcaoDeCadaBotao.gravaArquivoDeSaida(new Respostas());
 
 		}
 
