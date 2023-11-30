@@ -24,33 +24,25 @@ public class Verificacao {
 			if ((coordenada.getEixoX() + 1) == planeta.getPosicaoY()
 					&& (coordenada.getEixoY() + 1) == planeta.getPosicaoX()) {
 
-				System.out.println("O planeta " + planeta.getNome() + " bateu em um bug na posição ("
-						+ (coordenada.getEixoX() + 1) + ", " + (coordenada.getEixoY() + 1) + ")");
-
 				planeta.setVelocidade(planeta.getVelocidade() - 1);
 				planeta.setBugsCont(planeta.getBugsCont() + 1);
 
 				bugsASeremRemovidos.add(coordenada);
-				
+
 				coordenada.remove(coordenada.getImagemBug());
 			}
 
 		}
-		
-
 
 		if (bugsASeremRemovidos.size() >= 1) {
 
 			painel.getCoordenadasOcupadasPorBugs().removeAll(bugsASeremRemovidos);
 		}
-		
+
 		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorDesenvolvedores()) {
 
 			if ((coordenada.getEixoX() + 1) == planeta.getPosicaoY()
 					&& (coordenada.getEixoY() + 1) == planeta.getPosicaoX()) {
-
-				System.out.println("O planeta " + planeta.getNome() + " bateu em um dev na posição ("
-						+ (coordenada.getEixoX() + 1) + ", " + (coordenada.getEixoY() + 1) + ")");
 
 				planeta.setVelocidade(planeta.getVelocidade() + 1);
 
@@ -74,7 +66,7 @@ public class Verificacao {
 	public boolean verificarCoordenadaOcupada(int x, int y) {
 
 		if (coordenadasOcupadasPorPlanetas(x, y) || coordenadasOcupadasPorDesenvolvedores(x, y)
-				|| coordenadasOcupadasPorBugs(x, y)|| x == 7 && y ==7) {
+				|| coordenadasOcupadasPorBugs(x, y) || x == 7 && y == 7) {
 			return true;
 		}
 
@@ -83,7 +75,7 @@ public class Verificacao {
 
 	private boolean coordenadasOcupadasPorPlanetas(int x, int y) {
 		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorPlanetas()) {
-			if ( coordenada.getEixoX() == x && coordenada.getEixoY() == y) {
+			if (coordenada.getEixoX() == x && coordenada.getEixoY() == y) {
 				return true;
 			}
 		}
@@ -93,7 +85,7 @@ public class Verificacao {
 
 	private boolean coordenadasOcupadasPorDesenvolvedores(int x, int y) {
 		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorDesenvolvedores()) {
-			if ( coordenada.getEixoX() == x && coordenada.getEixoY() == y) {
+			if (coordenada.getEixoX() == x && coordenada.getEixoY() == y) {
 				return true;
 			}
 		}
@@ -103,7 +95,7 @@ public class Verificacao {
 
 	private boolean coordenadasOcupadasPorBugs(int x, int y) {
 		for (Coordenada coordenada : painel.getCoordenadasOcupadasPorBugs()) {
-			if ( coordenada.getEixoX() == x && coordenada.getEixoY() == y) {
+			if (coordenada.getEixoX() == x && coordenada.getEixoY() == y) {
 				return true;
 			}
 		}

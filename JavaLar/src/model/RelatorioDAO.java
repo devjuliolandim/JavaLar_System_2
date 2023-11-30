@@ -80,7 +80,6 @@ public class RelatorioDAO {
 		} catch (SQLException e) {
 
 			e.printStackTrace();
-			System.out.println("Não foi possível fazer a conexão");
 
 		}
 

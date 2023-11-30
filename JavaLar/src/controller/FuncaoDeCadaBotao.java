@@ -14,8 +14,8 @@ import view.PainelDoPlano;
 
 public class FuncaoDeCadaBotao {
 
-	private LerDadosDeOutrosParticipantes obterDadosDoBanco = new LerDadosDeOutrosParticipantes();
-
+	private LerDadosDeOutrosParticipantes lerDadosDeOutrosParticipantes;
+	
 	private String nomeDoArquivo;
 
 	private int quantidadeDeBugs;
@@ -25,32 +25,24 @@ public class FuncaoDeCadaBotao {
 		return nomeDoArquivo;
 	}
 
-	public int getQuantidadeDeBugs() {
-		return quantidadeDeBugs;
+	public void processarProximoInstante(List<String[]> infosDoArquivoSelecionado, Memoria memoria,
+			PainelDoPlano painelDoPlano) {
+
+		interpretarDadosLidos(infosDoArquivoSelecionado, memoria, painelDoPlano);
+		
+		painelDoPlano.adicionarImagensDosBugs(quantidadeDeBugs);
+		painelDoPlano.adicionarImagemDosDevs(quantidadeDeDevs);
+		
+		for (Coordenada coordenada : painelDoPlano.getCoordenadasOcupadasPorPlanetas()) {
+			coordenada.remove(coordenada.getImagem());
+		}
+		
+		painelDoPlano.getCoordenadasOcupadasPorPlanetas().clear();
+		painelDoPlano.adicionarImagensDosPlanetas();
+		
 	}
 
-	public int getQuantidadeDeDevs() {
-		return quantidadeDeDevs;
-	}
-
-	public void gravarRelatorio(Relatorio relatorio, PainelDoPlano painelDoPlano) {
-
-		relatorio.setNomeArquivo(getNomeDoArquivo());
-
-		relatorio.relatorioQuadrantesBugs(painelDoPlano.getCoordenadasOcupadasPorBugs());
-		relatorio.relatorioQuadrantesDevs(painelDoPlano.getCoordenadasOcupadasPorDesenvolvedores());
-
-		relatorio.enviarRelatorioParaOBanco();
-
-	}
-
-	public void lerDadosDeOutrosParticipantes() {
-
-		obterDadosDoBanco.obterDadosDoBanco();
-
-	}
-
-	public void interpretarDadosLidos(List<String[]> infos, Memoria memoria, PainelDoPlano painel) {
+	private void interpretarDadosLidos(List<String[]> infos, Memoria memoria, PainelDoPlano painel) {
 
 		if (!infos.isEmpty()) {
 
@@ -76,9 +68,6 @@ public class FuncaoDeCadaBotao {
 			quantidadeDeDevs = Integer.parseInt(linha[linha.length - 1]);
 			quantidadeDeBugs = Integer.parseInt(linha[linha.length - 2]);
 
-		} else {
-
-			System.out.println("Não há mais informações disponíveis para mostrar");
 		}
 
 	}
@@ -87,8 +76,7 @@ public class FuncaoDeCadaBotao {
 
 		JFileChooser fileChooser = new JFileChooser();
 
-		fileChooser.setCurrentDirectory(new File(
-				"C:\\Users\\Júlio César\\Desktop\\FACULDADE\\2º SEMESTRE\\TÉCNICAS DE PROGRAMAÇÃO\\JavaLar\\Arquivos de Instantes"));
+		fileChooser.setCurrentDirectory(new File("Arquivos de Instantes"));
 
 		fileChooser.setFileFilter(new FileNameExtensionFilter("csv", "csv"));
 
@@ -108,27 +96,31 @@ public class FuncaoDeCadaBotao {
 		return null;
 
 	}
+	
+	public void gravarRelatorio(Relatorio relatorio, PainelDoPlano painelDoPlano) {
+
+		relatorio.setNomeArquivo(nomeDoArquivo);
+
+		relatorio.relatorioQuadrantesBugs(painelDoPlano.getCoordenadasOcupadasPorBugs());
+		relatorio.relatorioQuadrantesDevs(painelDoPlano.getCoordenadasOcupadasPorDesenvolvedores());
+
+		relatorio.enviarRelatorioParaOBanco();
+
+	}
+
+	public void lerDadosDeOutrosParticipantes() {
+
+		lerDadosDeOutrosParticipantes = new LerDadosDeOutrosParticipantes();
+		lerDadosDeOutrosParticipantes.obterDadosDoBanco();
+
+	}
 
 	public void gravaArquivoDeSaida(Respostas respostas) {
 
-		new GravarArquivoDeSaida(respostas, obterDadosDoBanco);
+		new GravarArquivoDeSaida(respostas, lerDadosDeOutrosParticipantes);
 
 	}
 
-	public void processarProximoInstante(List<String[]> infosDoArquivoSelecionado, Memoria memoria,
-			PainelDoPlano painelDoPlano) {
-
-		interpretarDadosLidos(infosDoArquivoSelecionado, memoria, painelDoPlano);
-		painelDoPlano.adicionarImagensDosBugs(getQuantidadeDeBugs());
-		painelDoPlano.adicionarImagemDosDevs(getQuantidadeDeDevs());
-		
-		for (Coordenada coordenada : painelDoPlano.getCoordenadasOcupadasPorPlanetas()) {
-			coordenada.remove(coordenada.getImagem());
-		}
-		
-		painelDoPlano.getCoordenadasOcupadasPorPlanetas().clear();
-		painelDoPlano.adicionarImagensDosPlanetas();
-		
-	}
+	
 
 }

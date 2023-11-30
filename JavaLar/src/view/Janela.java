@@ -11,7 +11,7 @@ public class Janela extends JFrame {
 	private PainelDoPlano painelDoPlano;
 	private PainelBotoes painelDeBotoes;
 
-	public static Memoria memoria = new Memoria();
+	private Memoria memoria = new Memoria();
 
 	public Janela() {
 
@@ -20,6 +20,7 @@ public class Janela extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setLayout(new BorderLayout());
+		this.setResizable(false);
 		
 		configurarPaineis();
 	
@@ -27,7 +28,7 @@ public class Janela extends JFrame {
 		this.setVisible(true);
 	}
 
-	public void configurarPaineis() {
+	private void configurarPaineis() {
 
 		painelDoPlano = new PainelDoPlano(memoria);
 		add(painelDoPlano, BorderLayout.CENTER);

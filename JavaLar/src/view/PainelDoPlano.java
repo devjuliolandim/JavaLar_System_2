@@ -21,7 +21,6 @@ import controller.Java;
 public class PainelDoPlano extends JPanel {
 
 	private static final int TAMANHO_DO_GRID = 15;
-	private static final int TAMANHO_DO_PLANO = 225;
 
 	private Coordenada[][] coordenadas;
 	private ArrayList<Coordenada> coordenadasOcupadasPorPlanetas = new ArrayList<>();
@@ -45,7 +44,7 @@ public class PainelDoPlano extends JPanel {
 		setBorder(new LineBorder(Color.gray, 10));
 		setLayout(new GridLayout(TAMANHO_DO_GRID, TAMANHO_DO_GRID));
 
-		coordenadas = new Coordenada[TAMANHO_DO_PLANO][TAMANHO_DO_PLANO];
+		coordenadas = new Coordenada[TAMANHO_DO_GRID][TAMANHO_DO_GRID];
 
 		criarCoordenadas();
 		adicionarImagensDosPlanetas();
@@ -138,7 +137,7 @@ public class PainelDoPlano extends JPanel {
 
 					if (planetas.isVivoOuMorto() == true) {
 
-						if (planetas.getPosicaoX() == (j + 1) && planetas.getPosicaoY() == (i + 1)) {
+						if (planetas.getPosicaoX() == (j + 1 ) && planetas.getPosicaoY() == (i + 1)) {
 
 							coordenadas[i][j].setImagem(planetas.getImagem());
 							
