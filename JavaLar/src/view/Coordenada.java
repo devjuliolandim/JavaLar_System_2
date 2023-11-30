@@ -24,7 +24,7 @@ public class Coordenada extends JPanel {
 		this.eixoX = posX;
 		this.eixoY = posY;
 
-		//definirCoordenada(posX, posY);
+		definirCoordenada(posX, posY);
 
 	}
 

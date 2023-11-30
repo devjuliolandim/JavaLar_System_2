@@ -18,8 +18,8 @@ public class FuncaoDeCadaBotao {
 
 	private String nomeDoArquivo;
 
-	public int quantidadeDeBugs;
-	public int quantidadeDeDevs;
+	private int quantidadeDeBugs;
+	private int quantidadeDeDevs;
 
 	public String getNomeDoArquivo() {
 		return nomeDoArquivo;
@@ -119,16 +119,16 @@ public class FuncaoDeCadaBotao {
 			PainelDoPlano painelDoPlano) {
 
 		interpretarDadosLidos(infosDoArquivoSelecionado, memoria, painelDoPlano);
-
 		painelDoPlano.adicionarImagensDosBugs(getQuantidadeDeBugs());
 		painelDoPlano.adicionarImagemDosDevs(getQuantidadeDeDevs());
-
+		
 		for (Coordenada coordenada : painelDoPlano.getCoordenadasOcupadasPorPlanetas()) {
 			coordenada.remove(coordenada.getImagem());
 		}
-
+		
+		painelDoPlano.getCoordenadasOcupadasPorPlanetas().clear();
 		painelDoPlano.adicionarImagensDosPlanetas();
-
+		
 	}
 
 }
